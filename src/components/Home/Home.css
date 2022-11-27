@@ -1,0 +1,203 @@
+.Home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.Home__forcast-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border: solid 1px rgba(138, 138, 138, 0.1);
+  border-radius: 15px;
+  margin: 0 50px;
+  padding: 20px;
+}
+
+.forcast-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.forcast-container__location {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 30px;
+}
+
+.forcast-container__span {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.forcast-container__span-city {
+  font-family:'Roboto',sans-serif;
+  font-size: 2.6rem;
+  line-height: 2.6rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.forcast-container__favorites-button {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  font-weight: 400;
+  color: white;
+  background-color: #5389e7;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  cursor: pointer;
+  margin: -40px 0 0;
+  padding: 0;
+}
+
+.forcast-container__favorites-button_active {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  font-weight: 400;
+  color: #5389e7;
+  background-color: transparent;
+  border: 1px solid #5389e7;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: -40px 0 0;
+  padding: 0;
+}
+
+.forcast-container__span-degrees {
+  font-family: 'Roboto',sans-serif;
+  font-size: 4rem;
+  line-height: 4.5rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.forcast-container__image {
+  width: 200px;
+  margin: 0;
+  padding: 0;
+}
+
+.forcast-container__title {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: gray;
+  margin: 0;
+  padding: 0;
+}
+
+.forcast-container__today {
+  background-color: rgba(240, 240, 240, 0.7);
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  margin: 20px 0 0;
+  padding: 20px;
+}
+
+.forcast-container__today-forecast {
+  display: grid;
+  background-color: #b3b3b348;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 1px;
+  margin: 20px 0;
+  padding: 0;
+}
+
+.forcast-container__air-conditions {
+  background-color: rgba(240, 240, 240, 0.7);
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  margin: 20px 0 0;
+  padding: 20px;
+}
+
+.air-conditions__details-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  flex-wrap: wrap;
+  margin: 10px 0 0;
+  padding: 5px;
+}
+
+.air-conditions__details {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+
+.air-conditions__detail {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 2px 0;
+}
+
+.air-conditions__details-icon {
+  width: 25px;
+  height: 25px;
+  opacity: 0.5;
+  margin: 5px 5px 0 0;
+  padding: 0;
+}
+
+.air-conditions__details-title {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  font-weight: 400;
+  color: grey;
+  margin: 0;
+  padding: 0;
+}
+
+.air-conditions__details-subtitle {
+  font-family: 'Roboto',sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.forcast-container__weekly {
+  width: 25%;
+  background-color: rgba(240, 240, 240, 0.7);
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  margin: 0;
+  padding: 20px 50px;
+}
+
+.forcast-container__weekly-forecast {
+  height: 100%;
+  display: grid;
+  background-color: #b3b3b348;
+  grid-template-rows: repeat(7, 1fr);
+  grid-row-gap: 1px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}

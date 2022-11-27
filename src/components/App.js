@@ -1,4 +1,4 @@
-import { Routes, Route, Link, Outlet, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';

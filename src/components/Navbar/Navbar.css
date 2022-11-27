@@ -1,0 +1,59 @@
+.Navbar {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #5389e7;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.Navbar__title {
+  font-family:'Roboto',sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar__nav-container {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar__button {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: white;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  padding: 0;
+}
