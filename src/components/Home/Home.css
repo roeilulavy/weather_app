@@ -61,6 +61,15 @@
   cursor: pointer;
   margin: -40px 0 0;
   padding: 0;
+  transition: background-color .1s ease-in-out;
+}
+
+.forcast-container__favorites-button:hover {
+  background-color:#347EFF;
+}
+
+.forcast-container__favorites-button:active {
+  background-color:#2A65CC;
 }
 
 .forcast-container__favorites-button_active {

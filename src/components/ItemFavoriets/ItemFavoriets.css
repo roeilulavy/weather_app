@@ -1,0 +1,77 @@
+.ItemFavoriets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(141, 141, 141, 0.2);
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.ItemFavoriets-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 50px 0;
+}
+
+.ItemFavoriets__title {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: gray;
+  margin: 0;
+  padding: 0;
+}
+
+.ItemFavoriets__tempreture {
+  font-family: 'Roboto',sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: black;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.ItemFavoriets__icon {
+  width: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+.ItemFavoriets__icon-description {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.ItemFavoriets__button {
+  width: 100%;
+  font-family: 'Roboto',sans-serif;
+  font-size: 0.9rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: black;
+  border: none;
+  border-radius: 0 0 15px 15px;
+  background-color: rgba(240, 240, 240, 0.7);
+  cursor: pointer;
+  margin: 20px 0 0;
+  padding: 5px;
+  transition: background-color .1s ease-in-out;
+}
+
+.ItemFavoriets__button:hover {
+  background-color: rgba(220, 220, 220, 0.7);
+}
+
+.ItemFavoriets__button:active {
+  background-color: rgba(186, 186, 186, 0.7);
+}

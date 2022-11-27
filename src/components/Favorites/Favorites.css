@@ -1,0 +1,28 @@
+.Favorites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.Favorites__title {
+  font-family: 'Roboto',sans-serif;
+  font-size: 2.6rem;
+  line-height: 2.6rem;
+  font-weight: 700;
+  color: black;
+  margin: 60px 0;
+  padding: 0;
+}
+
+.Favorites__places-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
