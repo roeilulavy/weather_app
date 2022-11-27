@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
-  border: solid 1px rgba(138, 138, 138, 0.1);
   border-radius: 15px;
   margin: 0 50px;
   padding: 20px;
@@ -24,12 +23,30 @@
   padding: 0;
 }
 
-.forcast-container__location {
+#light .forcast-container__location {
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 15px;
+  color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 0;
-  padding: 0 30px;
+  padding: 20px;
+}
+
+#dark .forcast-container__location {
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  background-color: rgb(39, 46, 61);
+  border-radius: 15px;
+  color: rgba(245, 245, 245, 0.8);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  padding: 20px;
 }
 
 .forcast-container__span {
@@ -49,7 +66,7 @@
   padding: 0;
 }
 
-.forcast-container__favorites-button {
+#light .forcast-container__favorites-button {
   font-family: 'Roboto',sans-serif;
   font-size: 1rem;
   line-height: 1.8rem;
@@ -64,12 +81,35 @@
   transition: background-color .1s ease-in-out;
 }
 
-.forcast-container__favorites-button:hover {
+#light .forcast-container__favorites-button:hover {
   background-color:#347EFF;
 }
 
-.forcast-container__favorites-button:active {
+#light .forcast-container__favorites-button:active {
   background-color:#2A65CC;
+}
+
+#dark .forcast-container__favorites-button {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  font-weight: 400;
+  color: white;
+  background-color: #2A65CC;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  cursor: pointer;
+  margin: -40px 0 0;
+  padding: 0;
+  transition: background-color .1s ease-in-out;
+}
+
+#dark .forcast-container__favorites-button:hover {
+  background-color:#295aae;
+}
+
+#dark .forcast-container__favorites-button:active {
+  background-color:#214e9b;
 }
 
 .forcast-container__favorites-button_active {
@@ -111,8 +151,20 @@
   padding: 0;
 }
 
-.forcast-container__today {
-  background-color: rgba(240, 240, 240, 0.7);
+#light .forcast-container__today {
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  margin: 20px 0 0;
+  padding: 20px;
+}
+#dark .forcast-container__today {
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  background-color: rgb(39, 46, 61);
   display: flex;
   flex-direction: column;
   border-radius: 15px;
@@ -129,10 +181,24 @@
   padding: 0;
 }
 
-.forcast-container__air-conditions {
-  background-color: rgba(240, 240, 240, 0.7);
+#light .forcast-container__air-conditions {
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
+  background-color: white;
+  border-radius: 15px;
+  margin: 20px 0 0;
+  padding: 20px;
+}
+
+#dark .forcast-container__air-conditions {
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(39, 46, 61);
+  color: rgba(245, 245, 245, 0.8);
   border-radius: 15px;
   margin: 20px 0 0;
   padding: 20px;
@@ -163,10 +229,20 @@
   padding: 2px 0;
 }
 
-.air-conditions__details-icon {
+#light .air-conditions__details-icon {
   width: 25px;
   height: 25px;
   opacity: 0.5;
+  margin: 5px 5px 0 0;
+  padding: 0;
+}
+
+#dark .air-conditions__details-icon {
+  width: 25px;
+  height: 25px;
+  opacity: 0.4;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
   margin: 5px 5px 0 0;
   padding: 0;
 }
@@ -190,9 +266,23 @@
   padding: 0;
 }
 
-.forcast-container__weekly {
+#light .forcast-container__weekly {
   width: 25%;
-  background-color: rgba(240, 240, 240, 0.7);
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  margin: 0;
+  padding: 20px 50px;
+}
+
+#dark .forcast-container__weekly {
+  width: 25%;
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  background-color: rgb(39, 46, 61);
   display: flex;
   flex-direction: column;
   border-radius: 15px;

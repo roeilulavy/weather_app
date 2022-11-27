@@ -6,12 +6,22 @@
   padding: 0;
 }
 
-.Favorites__title {
+#light .Favorites__title {
   font-family: 'Roboto',sans-serif;
   font-size: 2.6rem;
   line-height: 2.6rem;
   font-weight: 700;
   color: black;
+  margin: 60px 0;
+  padding: 0;
+}
+
+#dark .Favorites__title {
+  font-family: 'Roboto',sans-serif;
+  font-size: 2.6rem;
+  line-height: 2.6rem;
+  font-weight: 700;
+  color: rgba(245, 245, 245, 0.8);
   margin: 60px 0;
   padding: 0;
 }

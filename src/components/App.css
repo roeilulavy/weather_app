@@ -1,4 +1,11 @@
-.App {
+#light {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+#dark {
+  background-color: rgb(21, 25, 35);
   width: 100vw;
   height: 100vh;
 }

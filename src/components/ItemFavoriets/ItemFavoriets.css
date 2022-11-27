@@ -1,10 +1,27 @@
-.ItemFavoriets {
+#light .ItemFavoriets {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 1px solid rgba(141, 141, 141, 0.2);
+  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   cursor: pointer;
+  background-color: white;
+  color: grey;
+  margin: 0;
+  padding: 0;
+}
+
+#dark .ItemFavoriets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(141, 141, 141, 0.2);
+  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: rgb(39, 46, 61);
+  color: rgba(245, 245, 245, 0.8);
   margin: 0;
   padding: 0;
 }
@@ -21,17 +38,26 @@
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 500;
-  color: gray;
   margin: 0;
   padding: 0;
 }
 
-.ItemFavoriets__tempreture {
+#light .ItemFavoriets__tempreture {
   font-family: 'Roboto',sans-serif;
   font-size: 2rem;
   line-height: 2.5rem;
   font-weight: 700;
   color: black;
+  margin: 15px 0;
+  padding: 0;
+}
+
+#dark .ItemFavoriets__tempreture {
+  font-family: 'Roboto',sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
   margin: 15px 0;
   padding: 0;
 }
@@ -42,12 +68,22 @@
   padding: 0;
 }
 
-.ItemFavoriets__icon-description {
+#light .ItemFavoriets__icon-description {
   font-family: 'Roboto',sans-serif;
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 500;
   color: black;
+  margin: 0;
+  padding: 0;
+}
+
+#dark .ItemFavoriets__icon-description {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
   margin: 0;
   padding: 0;
 }
