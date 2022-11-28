@@ -1,11 +1,11 @@
 #light {
+  width: 100%;
+  min-height: 100vh;
   background-color: white;
-  width: 100vw;
-  height: 100vh;
 }
 
 #dark {
+  width: 100%;
+  min-height: 100vh;
   background-color: rgb(21, 25, 35);
-  width: 100vw;
-  height: 100vh;
 }

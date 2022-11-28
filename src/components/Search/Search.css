@@ -3,6 +3,7 @@
   flex-direction: row;
   height: 60px;
   margin: 60px auto;
+  padding: 0;
 }
 
 #light .Search__input {
@@ -91,30 +92,83 @@
   background-color:#214e9b;
 }
 
-@media screen and (max-width:868px) {
-  .searchForm {
+@media screen and (max-width:1200px) {
+  .Search {
     height: 56px;
-    margin: 48px 0 0;
+    margin: 48px auto 48px;
   }
 }
 
-@media screen and (max-width:500px) {
-  .searchForm {
+@media screen and (max-width:900px) {
+  .Search {
+    height: 56px;
+    margin: 40px auto;
+  }
+}
+
+@media screen and (max-width:770px) {
+  .Search {
     display: flex;
     flex-direction: column;
-    height: 128px;
-    margin: 122px 0 0;
-    gap: 16px;
+    height: 120px;
+    margin: 40px 0;
+    gap: 12px;
   }
 
-  .searchForm__input {
+  #light .Search__input {
     width: auto;
     padding: 17px 16px;
+    margin: 0 50px;
   }
 
-  .searchForm__button {
+  #dark .Search__input {
+    width: auto;
+    padding: 17px 16px;
+    margin: 0 50px;
+  }
+
+  #light .Search__button {
     width: 288px;
     height: 56px;
-    margin: 0;
+    margin: 0 auto;
+  }
+
+  #dark .Search__button {
+    width: 288px;
+    height: 56px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width:550px) {
+  .Search {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    gap: 12px;
+  }
+
+  #light .Search__input {
+    width: auto;
+    padding: 10px 15px;
+    margin: 0 10px;
+  }
+
+  #dark .Search__input {
+    width: auto;
+    padding: 10px 15px;
+    margin: 0 10px;
+  }
+
+  #light .Search__button {
+    width: 150px;
+    height: 45px;
+    margin: 0 auto;
+  }
+
+  #dark .Search__button {
+    width: 150px;
+    height: 45px;
+    margin: 0 auto;
   }
 }

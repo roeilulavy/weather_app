@@ -1,4 +1,8 @@
 #light .ItemFavoriets {
+  max-width: 200px;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +17,10 @@
 }
 
 #dark .ItemFavoriets {
+  max-width: 200px;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,10 +42,14 @@
 }
 
 .ItemFavoriets__title {
+  max-width: 180px;
   font-family: 'Roboto',sans-serif;
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 500;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin: 0;
   padding: 0;
 }
@@ -110,4 +122,89 @@
 
 .ItemFavoriets__button:active {
   background-color: rgba(186, 186, 186, 0.7);
+}
+
+@media screen and (max-width:700px) {
+  .ItemFavoriets-container {
+    padding: 10px 30px 0;
+  }
+  
+  .ItemFavoriets__title {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+  
+  #light .ItemFavoriets__tempreture {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin: 10px 0;
+  }
+  
+  #dark .ItemFavoriets__tempreture {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin: 10px 0;
+  }
+  
+  .ItemFavoriets__icon {
+    width: 80px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #light .ItemFavoriets__icon-description {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+  
+  #dark .ItemFavoriets__icon-description {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media screen and (max-width:550px) {
+  .ItemFavoriets-container {
+    padding: 10px;
+  }
+  
+  .ItemFavoriets__title {
+    max-width: 90px;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+  
+  #light .ItemFavoriets__tempreture {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    margin: 10px 0 0;
+  }
+  
+  #dark .ItemFavoriets__tempreture {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    margin: 10px 0 0;
+  }
+  
+  .ItemFavoriets__icon {
+    width: 50px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #light .ItemFavoriets__icon-description {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+  
+  #dark .ItemFavoriets__icon-description {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+
+  .ItemFavoriets__button {
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+    margin: 5px 0 0;
+  }
 }

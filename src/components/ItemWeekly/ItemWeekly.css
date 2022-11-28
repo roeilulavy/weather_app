@@ -103,3 +103,47 @@
   font-weight: 400;
   color: grey;
 }
+
+@media screen and (max-width:550px) {
+  #light .ItemWeekly__day {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+  
+  #dark .ItemWeekly__day {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+
+  .ItemWeekly__icon {
+    width: 30px;
+  }
+
+  #light .ItemWeekly__icon-description {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+  
+  #dark .ItemWeekly__icon-description {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+
+  #light .ItemWeekly__tempreture {
+    font-size: 0.8rem;
+    line-height: 2rem;
+  }
+  
+  #dark .ItemWeekly__tempreture {
+    font-size: 0.8rem;
+    line-height: 2rem;
+  }
+  
+  #light .ItemWeekly__tempreture:last-child {
+    font-size: 0.8rem;
+  }
+  
+  #dark .ItemWeekly__tempreture:last-child {
+    font-size: 0.8rem;
+  }
+}

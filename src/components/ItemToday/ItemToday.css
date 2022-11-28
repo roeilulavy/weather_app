@@ -61,3 +61,31 @@
   margin: 0;
   padding: 0;
 }
+
+@media screen and (max-width:550px) {
+  #light .ItemToday__time {
+    font-size: 0.7rem;
+    line-height: 1rem;
+  }
+  
+  #dark .ItemToday__time {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+
+  .ItemToday__icon {
+    width: 50px;
+    margin: 8px 0;
+    padding: 0;
+  }
+
+  #light .ItemToday__tempreture {
+    font-size: 1rem;
+    line-height: 1.1rem;
+  }
+  
+  #dark .ItemToday__tempreture {
+    font-size: 1rem;
+    line-height: 1.1rem;
+  }
+}

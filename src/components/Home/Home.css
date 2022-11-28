@@ -1,8 +1,8 @@
 .Home {
-  width: 100%;
+  max-width: 1800px;
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 }
 
@@ -290,6 +290,16 @@
   padding: 20px 50px;
 }
 
+.forcast-container__weekly-title {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: gray;
+  margin: 0;
+  padding: 0;
+}
+
 .forcast-container__weekly-forecast {
   height: 100%;
   display: grid;
@@ -299,4 +309,178 @@
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (max-width:1200px) {
+  #light .forcast-container__weekly {
+    padding: 20px;
+  }
+  
+  #dark .forcast-container__weekly {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width:1000px) {
+  #light .forcast-container__weekly {
+    width: 30%;
+    padding: 10px;
+  }
+  
+  #dark .forcast-container__weekly {
+    width: 30%;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width:900px) {
+  .Home__forcast-container {
+    flex-direction: column;
+    padding: 0;
+  }
+  
+  .forcast-container {
+    width: 100%;
+  }
+
+  .forcast-container__span-city {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+  
+  #light .forcast-container__favorites-button {
+    font-size: 0.8rem;
+    line-height: 1.8rem;
+    margin: -20px 0 0;
+  }
+  
+  #dark .forcast-container__favorites-button {
+    font-size: 0.8rem;
+    line-height: 1.8rem;
+    margin: -20px 0 0;
+  }
+  
+  .forcast-container__favorites-button_active {
+    font-size: 0.8rem;
+    line-height: 1.8rem;
+    margin: -20px 0 0;
+  }
+  
+  .forcast-container__span-degrees {
+    font-size: 3rem;
+    line-height: 3.5rem;
+  }
+  
+  .forcast-container__image {
+    width: 150px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .forcast-container__title {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .forcast-container__today-forecast {
+    margin: 10px 0;
+  }
+
+  .air-conditions__details-subtitle {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  #light .forcast-container__weekly {
+    width: 100%;
+    margin: 0 auto 40px;
+    padding: 20px 0;
+  }
+  
+  #dark .forcast-container__weekly {
+    width: 100%;
+    margin: 0 auto 40px;
+    padding: 20px 0;
+  }
+
+  .forcast-container__weekly-forecast {
+    grid-template-rows: repeat(7, 50px);
+    margin: 20px 50px;
+    padding: 0;
+  }
+
+  .forcast-container__weekly-title {
+    margin: 0 20px;
+  }
+}
+
+@media screen and (max-width:550px) {
+  .Home__forcast-container {
+    margin: 0 10px;
+    padding: 0 10px;
+  }
+
+  .forcast-container__span-city {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  #light .forcast-container__favorites-button {
+    font-size: 0.6rem;
+    line-height: 1.1rem;
+    margin: -10px 0 0;
+  }
+  
+  #dark .forcast-container__favorites-button {
+    font-size: 0.6rem;
+    line-height: 1.1rem;
+    margin: -10px 0 0;
+  }
+  
+  .forcast-container__favorites-button_active {
+    font-size: 0.6rem;
+    line-height: 1.1rem;
+    margin: -10px 0 0;
+  }
+  
+  .forcast-container__span-degrees {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+  
+  .forcast-container__image {
+    width: 100px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .forcast-container__title {
+    font-size: 0.8rem;
+    line-height: 1.1rem;
+  }
+
+  .air-conditions__details-title {
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+  }
+
+  .air-conditions__details-subtitle {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  #light .air-conditions__details-icon {
+    width: 15px;
+    height: 15px;
+  }
+  
+  #dark .air-conditions__details-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .forcast-container__weekly-title {
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+  }
 }

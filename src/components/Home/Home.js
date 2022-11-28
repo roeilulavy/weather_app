@@ -75,7 +75,7 @@ export default function Home() {
         </div>
 
         <div className='forcast-container__weekly'>
-          <h2 className='forcast-container__title'>WEEKLY FORECAST</h2>
+          <h2 className='forcast-container__weekly-title'>WEEKLY FORECAST</h2>
           <div className='forcast-container__weekly-forecast'>
             <ItemWeekly />
             <ItemWeekly />
