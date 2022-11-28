@@ -3,6 +3,7 @@ const API_KEY = 'BXavEULkerbqAJPASxxwAgzVsVTiwuqt';
 
 const AutoComplete_URL = 'locations/v1/cities/autocomplete';
 const CurrentWeathr_URL = 'currentconditions/v1';
+const HourlyForecasts_URL = 'forecasts/v1/hourly/12hour'
 const FutureForecasts_URL = 'forecasts/v1/daily/5day';
 
 class NewsApi {
@@ -26,6 +27,18 @@ class NewsApi {
 
   async getCurrentWeathr(searchKeyword) {
     const response = await fetch(`${this.baseUrl}/${CurrentWeathr_URL}/${searchKeyword}?apikey=${API_KEY}&details=true`);
+
+    return this._checkResponse(response);
+  }
+
+  async getHourlyForecastsInCelsius(searchKeyword) {
+    const response = await fetch(`${this.baseUrl}/${HourlyForecasts_URL}/${searchKeyword}?apikey=${API_KEY}&metric=true`);
+
+    return this._checkResponse(response);
+  }
+
+  async getHourlyForecastsInFahrenheit(searchKeyword) {
+    const response = await fetch(`${this.baseUrl}/${HourlyForecasts_URL}/${searchKeyword}?apikey=${API_KEY}&metric=false`);
 
     return this._checkResponse(response);
   }

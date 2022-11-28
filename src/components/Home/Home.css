@@ -137,6 +137,7 @@
 
 .forcast-container__image {
   width: 200px;
+  height: 200px;
   margin: 0;
   padding: 0;
 }
@@ -304,7 +305,7 @@
   height: 100%;
   display: grid;
   background-color: #b3b3b348;
-  grid-template-rows: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-row-gap: 1px;
   flex-wrap: wrap;
   margin: 0;
@@ -373,6 +374,7 @@
   
   .forcast-container__image {
     width: 150px;
+    height: 150px;
     margin: 0;
     padding: 0;
   }
@@ -404,7 +406,7 @@
   }
 
   .forcast-container__weekly-forecast {
-    grid-template-rows: repeat(7, 50px);
+    grid-template-rows: repeat(5, 50px);
     margin: 20px 50px;
     padding: 0;
   }
@@ -450,6 +452,7 @@
   
   .forcast-container__image {
     width: 100px;
+    height: 100px;
     margin: 0;
     padding: 0;
   }

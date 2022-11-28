@@ -1,4 +1,4 @@
-const currentWeather = [
+export const currentWeather = [
   {
     "LocalObservationDateTime": "2022-11-27T13:32:00+02:00",
     "EpochTime": 1669548720,
@@ -47,7 +47,7 @@ const currentWeather = [
         "Phrase": "Pleasant"
       }
     },
-    "RelativeHumidity": 45,
+    "RelativeHumidity": 45,//----------------------------------------------------------------------
     "IndoorRelativeHumidity": 45,
     "DewPoint": {
       "Metric": {
