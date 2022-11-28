@@ -2,20 +2,24 @@ import './Search.css';
 import { useEffect, useState } from 'react';
 
 export default function Search({ onSearch }) {
+
   const [keyword, setKeyword] = useState('');
   const [placeholder, setPlaceholder] = useState('');
 
   useEffect(() => {
     setPlaceholder('Search for a place');
-  },[])
+  },[]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    if (!keyword) {
+
+    if (keyword.trim().length === 0 || !keyword) {
+      setKeyword('');
       setPlaceholder('Search for a place');
       return;
     }
     onSearch(keyword);
+    setKeyword('');
   };
 
   return (
@@ -27,7 +31,7 @@ export default function Search({ onSearch }) {
         placeholder={placeholder}
         autoComplete='off'
         value={keyword || ''}
-        onChange={(e) => setKeyword(e.target.value)}
+        onChange={event => setKeyword(event.target.value)}
         />
       <button className='Search__button' type='submit'>Search</button>
     </form>

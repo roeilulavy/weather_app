@@ -1,0 +1,41 @@
+.Loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 0;
+}
+
+.Loader__spinner {
+	width: 75px;
+	height: 75px;
+	border: 2px solid #444;
+	border-bottom-color: #F5F6F7;
+	border-radius: 50%;
+	margin: auto;
+	animation: spin .75s infinite linear;
+}
+
+#light .Loader__title{
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: #000000;
+  margin: 25px 0 0;
+}
+
+#dark .Loader__title{
+  font-family: 'Roboto',sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: rgba(245, 245, 245, 0.8);
+  margin: 25px 0 0;
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}

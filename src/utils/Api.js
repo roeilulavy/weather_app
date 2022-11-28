@@ -1,0 +1,46 @@
+const BASE_URL = 'http://dataservice.accuweather.com';
+const API_KEY = 'BXavEULkerbqAJPASxxwAgzVsVTiwuqt';
+
+const AutoComplete_URL = 'locations/v1/cities/autocomplete';
+const CurrentWeathr_URL = 'currentconditions/v1';
+const FutureForecasts_URL = 'forecasts/v1/daily/5day';
+
+class NewsApi {
+  constructor(baseUrl, apiKey) {
+    this.baseUrl = baseUrl;
+    this.apiKey = apiKey;
+  }
+
+  _checkResponse(response) {
+    if (response.ok) {
+      return response.json();
+    }
+    return Promise.reject(`Something went wrong:  ${response.status}`);
+  }
+
+  async getAutoComplete(searchKeyword) {
+    const response = await fetch(`${this.baseUrl}/${AutoComplete_URL}?apikey=${API_KEY}&q=${searchKeyword}`);
+
+    return this._checkResponse(response);
+  }
+
+  async getCurrentWeathr(searchKeyword) {
+    const response = await fetch(`${this.baseUrl}/${CurrentWeathr_URL}/${searchKeyword}?apikey=${API_KEY}&details=true`);
+
+    return this._checkResponse(response);
+  }
+
+  async getFutureForecastsInCelsius(searchKeyword) {
+    const response = await fetch(`${this.baseUrl}/${FutureForecasts_URL}/${searchKeyword}?apikey=${API_KEY}&details=false&metric=true`);
+
+    return this._checkResponse(response);
+  }
+
+  async getFutureForecastsInFahrenheit(searchKeyword) {
+    const response = await fetch(`${this.baseUrl}/${FutureForecasts_URL}/${searchKeyword}?apikey=${API_KEY}&details=false&metric=false`);
+
+    return this._checkResponse(response);
+  }
+}
+
+export default new NewsApi(BASE_URL, API_KEY)
