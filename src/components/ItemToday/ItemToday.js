@@ -1,15 +1,17 @@
-import Sun from '../../images/sun.png';
+import {getImage} from '../../utils/getImage';
 import './ItemToday.css';
 
 export default function ItemToday({data}) {
-
-  console.log(data);
-
   return (
-    <div className='ItemToday'>
-      <h1 className='ItemToday__time'>6:00 AM</h1>
-      <img className='ItemToday__icon' src={Sun} alt='whaether icon'/>
-      <h2 className='ItemToday__tempreture'>25°</h2>
-    </div>
+    <>
+      {data.slice(0,5).map((item, index) => (
+        <div className='ItemToday' key={index}>
+          <h4 className='ItemToday__time'>{item.DateTime.slice(11,16)}</h4>
+          <img className='ItemToday__icon' src={getImage(item.WeatherIcon)} alt='whaether icon'/>
+          <span className='ItemToday__tempreture'>{item.Temperature.Value}°</span>
+          {console.log(item)}
+        </div>
+      ))}
+    </>
   );
 }

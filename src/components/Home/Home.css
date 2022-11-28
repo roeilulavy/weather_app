@@ -276,7 +276,7 @@
   flex-direction: column;
   border-radius: 15px;
   margin: 0;
-  padding: 20px 50px;
+  padding: 20px;
 }
 
 #dark .forcast-container__weekly {
@@ -288,7 +288,7 @@
   flex-direction: column;
   border-radius: 15px;
   margin: 0;
-  padding: 20px 50px;
+  padding: 20px;
 }
 
 .forcast-container__weekly-title {
@@ -334,7 +334,7 @@
   }
 }
 
-@media screen and (max-width:900px) {
+@media screen and (max-width:950px) {
   .Home__forcast-container {
     flex-direction: column;
     padding: 0;
@@ -406,8 +406,8 @@
   }
 
   .forcast-container__weekly-forecast {
-    grid-template-rows: repeat(5, 50px);
-    margin: 20px 50px;
+    grid-template-rows: repeat(5, 1fr);
+    margin: 20px 50px 0;
     padding: 0;
   }
 
@@ -485,5 +485,9 @@
   .forcast-container__weekly-title {
     font-size: 0.8rem;
     line-height: 1.5rem;
+  }
+
+  .forcast-container__weekly-forecast {
+    margin: 20px 20px 0;
   }
 }

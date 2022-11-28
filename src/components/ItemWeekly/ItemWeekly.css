@@ -41,22 +41,26 @@
 }
 
 .ItemWeekly__icon-container {
+  max-width: 100px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  margin: 10px 0;
+  padding: 0;
 }
 
 .ItemWeekly__icon {
-  width: 50px;
+  width: 80px;
   margin: 0;
   padding: 0;
 }
 
 #light .ItemWeekly__icon-description {
   font-family: 'Roboto',sans-serif;
-  font-size: 1rem;
-  line-height: 2rem;
+  font-size: 0.8rem;
+  line-height: 1rem;
   font-weight: 700;
+  text-align: center;
   color: black;
   margin: 0;
   padding: 0;
@@ -64,9 +68,10 @@
 
 #dark .ItemWeekly__icon-description {
   font-family: 'Roboto',sans-serif;
-  font-size: 1rem;
-  line-height: 2rem;
+  font-size: 0.8rem;
+  line-height: 1rem;
   font-weight: 700;
+  text-align: center;
   color: rgba(245, 245, 245, 0.8);
   margin: 0;
   padding: 0;

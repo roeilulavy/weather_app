@@ -19,7 +19,7 @@ export default function ItemWeekly({data}) {
         </div>
         <div>
           <span className='ItemWeekly__tempreture'>{item.Temperature.Maximum.Value}</span>
-          <span className='ItemWeekly__tempreture'> /{item.Temperature.Minimum.Value}</span>
+          <span className='ItemWeekly__tempreture'>/{item.Temperature.Minimum.Value}</span>
         </div>
       </div>
       ))}

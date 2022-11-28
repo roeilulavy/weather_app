@@ -39,7 +39,7 @@ export default function Home() {
     setIsLoading(true);
 
     setCurrentTempreture(currentWeather[0]);
-    setNextHoursForecast(nextForecast[0]);
+    setNextHoursForecast(nextForecast);
     setNextWeekForecast(futureForecast);
 
     setTimeout(() => {
@@ -79,7 +79,6 @@ export default function Home() {
 
       {
         isloading ? <Loader /> : isOpen &&
-
           <div className='Home__forcast-container'>
 
             <div className='forcast-container'>
@@ -94,14 +93,16 @@ export default function Home() {
                 <img className='forcast-container__image' src={getImage(currentTempreture.WeatherIcon)} alt='s' />
               </div>
 
-              <div className='forcast-container__today'>
-                <h2 className='forcast-container__title'>TODAY'S FORECAST</h2>
-                <div className='forcast-container__today-forecast'>
-                  <ItemToday 
-                    data={nextWeekForecast}
-                  />
+              {nextHoursForecast && 
+                <div className='forcast-container__today'>
+                  <h2 className='forcast-container__title'>TODAY'S FORECAST</h2>
+                  <div className='forcast-container__today-forecast'>
+                    <ItemToday 
+                      data={nextHoursForecast}
+                    />
+                  </div>
                 </div>
-              </div>
+              }
 
               <div className='forcast-container__air-conditions'>
                 <h3 className='forcast-container__title'>AIR CONDITIONS</h3>
@@ -148,15 +149,17 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            <div className='forcast-container__weekly'>
-              <h2 className='forcast-container__weekly-title'>WEEKLY FORECAST</h2>
-              <div className='forcast-container__weekly-forecast'>
-                <ItemWeekly 
-                  data={nextHoursForecast}
-                />
+            
+            {nextWeekForecast && 
+              <div className='forcast-container__weekly'>
+                <h2 className='forcast-container__weekly-title'>WEEKLY FORECAST</h2>
+                <div className='forcast-container__weekly-forecast'>
+                  <ItemWeekly 
+                    data={nextWeekForecast}
+                  />
+                </div>
               </div>
-            </div>
+            }
 
           </div>
       }
