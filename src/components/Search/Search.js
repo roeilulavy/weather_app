@@ -19,18 +19,18 @@ export default function Search({ onSearch }) {
     setKeyword(string);
     setIsVisible(true);
     
-    // if (string.trim().length > 0) {
-      // setKeyword(string);
-      // setIsVisible(true);
+    if (string.trim().length > 0) {
+      setKeyword(string);
+      setIsVisible(true);
 
-    //   const getAutoComplete = await Api.getAutoComplete(keyword);
+      const getAutoComplete = await Api.getAutoComplete(keyword);
 
-    //   if(getAutoComplete) {
-    //     setSuggestions(getAutoComplete);
-    //   }
-    // } else {
-    //   setIsVisible(false);
-    // }
+      if(getAutoComplete) {
+        setSuggestions(getAutoComplete);
+      }
+    } else {
+      setIsVisible(false);
+    }
   };
 
   const onSuggestHandler = (keycode, cityName) => {

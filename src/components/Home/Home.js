@@ -11,9 +11,9 @@ import Loader from '../Loader/Loader';
 import { useEffect, useState } from 'react';
 import {getImage} from '../../utils/getImage';
 
-import {currentWeather} from '../../utils/currentWeather';
-import {nextForecast} from '../../utils/nextTwelve';
-import {futureForecast} from '../../utils/futureForecast';
+// import {currentWeather} from '../../utils/currentWeather';
+// import {nextForecast} from '../../utils/nextTwelve';
+// import {futureForecast} from '../../utils/futureForecast';
 
 export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAddPlace, handleRemovePlace }) {
 
@@ -30,7 +30,6 @@ export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAdd
   const [nextWeekForecast, setNextWeekForecast] = useState([]);
 
   useEffect(() => {
-    console.log(searchByKeycode)
     handleSearch(searchByKeycode.keyCode, searchByKeycode.cityName);
   }, [searchByKeycode]);
 
@@ -63,41 +62,40 @@ export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAdd
     // }, 500);
 
     try {
-      // const getCurrentWeather = await Api.getCurrentWeather(keyCode);
+      const getCurrentWeather = await Api.getCurrentWeather(keyCode);
 
-      // if (getCurrentWeather) {
-      //   setCurrentTempreture(getCurrentWeather[0]);
-      // }
+      if (getCurrentWeather) {
+        setCurrentTempreture(getCurrentWeather[0]);
+      }
 
-      // if(isMetric) {
-      //   const getNextHoursForecast = await Api.getHourlyForecastsInCelsius(keyCode);
-      //   const getWeeklyForecast = await Api.getFutureForecastsInCelsius(keyCode);
+      if(isMetric) {
+        const getNextHoursForecast = await Api.getHourlyForecastsInCelsius(keyCode);
+        const getWeeklyForecast = await Api.getFutureForecastsInCelsius(keyCode);
 
-      //   if (getNextHoursForecast) {
-      //     setNextHoursForecast(getNextHoursForecast);
-      //   }
+        if (getNextHoursForecast) {
+          setNextHoursForecast(getNextHoursForecast);
+        }
 
-      //   if (getWeeklyForecast) {
-      //     setNextWeekForecast(getWeeklyForecast.DailyForecasts);
-      //   }
-      // } else {
-      //   const getNextHoursForecast = await Api.getHourlyForecastsInFahrenheit(keyCode);
-      //   const getWeeklyForecast = await Api.getFutureForecastsInFahrenheit(keyCode);
+        if (getWeeklyForecast) {
+          setNextWeekForecast(getWeeklyForecast.DailyForecasts);
+        }
+      } else {
+        const getNextHoursForecast = await Api.getHourlyForecastsInFahrenheit(keyCode);
+        const getWeeklyForecast = await Api.getFutureForecastsInFahrenheit(keyCode);
 
-      //   if (getNextHoursForecast) {
-      //     setNextHoursForecast(getNextHoursForecast);
-      //   }
+        if (getNextHoursForecast) {
+          setNextHoursForecast(getNextHoursForecast);
+        }
 
-      //   if (getWeeklyForecast) {
-      //     setNextWeekForecast(getWeeklyForecast.DailyForecasts);
-      //   }
+        if (getWeeklyForecast) {
+          setNextWeekForecast(getWeeklyForecast.DailyForecasts);
+        }
         
-      // }
+      }
 
-
-      setCurrentTempreture(currentWeather[0]);
-      setNextHoursForecast(nextForecast);
-      setNextWeekForecast(futureForecast.DailyForecasts);
+      // setCurrentTempreture(currentWeather[0]);
+      // setNextHoursForecast(nextForecast);
+      // setNextWeekForecast(futureForecast.DailyForecasts);
       
       setIsLoading(false);
       setIsOpen(true);

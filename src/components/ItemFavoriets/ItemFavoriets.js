@@ -23,13 +23,13 @@ export default function ItemFavoriets({ isMetric, data, handleRemovePlace, handl
       
       try {
 
-        setPlaceData(currentWeather[0]);
+        // setPlaceData(currentWeather[0]);
         
-        // const getData = Api.getCurrentWeather(data.Key);
+        const getData = Api.getCurrentWeather(data.Key);
 
-        // if(getData) {
-        //   setPlaceData(getData[0]);
-        // }
+        if(getData) {
+          setPlaceData(getData[0]);
+        }
 
       } catch (error) {
         console.error(error);
