@@ -10,7 +10,7 @@ export default function ItemWeekly({data}) {
 
   return (
     <>
-      {data.DailyForecasts.map((item, index) => (
+      {data.map((item, index) => (
         <div className='ItemWeekly' key={index}>
         <h1 className='ItemWeekly__day'>{index === 0 ? 'Today' : forecastDays[index]}</h1>
         <div className='ItemWeekly__icon-container'>

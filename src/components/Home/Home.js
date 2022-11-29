@@ -22,41 +22,50 @@ export default function Home() {
   const [searchError, setSearchError] = useState(false);
   const [isMetric, setIsMetric] = useState(true);
 
-  const [keyword, setSearchKeyword] = useState('');
+  const [keyword, setKeyword] = useState('');
+  const [keyCode, setKeyCode] = useState('');
   
   const [currentTempreture, setCurrentTempreture] = useState([]);
   const [nextHoursForecast, setNextHoursForecast] = useState([]);
   const [nextWeekForecast, setNextWeekForecast] = useState([]);
 
   useEffect(() => {
-    setSearchKeyword('');
+    handleSearch('215854', 'Tel Aviv');
   }, []);
 
-  async function handleSearch(keyword) {
-    setSearchKeyword('');
-    setSearchKeyword(keyword);
+  async function handleSearch(keyCode, cityName) {
+    setKeyword('');
+    setKeyCode('');
+
+    setKeyword(cityName);
+    setKeyCode(keyCode);
     setIsOpen(false);
     setIsLoading(true);
 
     setCurrentTempreture(currentWeather[0]);
     setNextHoursForecast(nextForecast);
-    setNextWeekForecast(futureForecast);
+    setNextWeekForecast(futureForecast.DailyForecasts);
 
     setTimeout(() => {
       setIsLoading(false);
       setIsOpen(true);
-    }, 2000);
+    }, 500);
 
     // try {
-    //   const currentWeather = await Api.getCurrentWeathr(215854);
-    //   const nextForecast = await Api.getHourlyForecastsInCelsius(215854);
+    //   const getCurrentWeather = await Api.getCurrentWeathr(keyCode);
+    //   const getNextHoursForecast = await Api.getHourlyForecastsInCelsius(keyCode);
+    //   const getWeeklyForecast = await Api.getFutureForecastsInCelsius(keyCode);
 
-    //   if (currentWeather) {
-    //     setCurrentTempreture(currentWeather[0]);
+    //   if (getCurrentWeather) {
+    //     setCurrentTempreture(getCurrentWeather[0]);
     //   }
 
-    //   if (nextForecast) {
-    //     setNextHoursForecast(nextForecast[0]);
+    //   if (getNextHoursForecast) {
+    //     setNextHoursForecast(getNextHoursForecast);
+    //   }
+
+    //    if (getWeeklyForecast) {
+    //     setNextWeekForecast(getWeeklyForecast.DailyForecasts);
     //   }
 
     // } catch (error) {
@@ -65,46 +74,49 @@ export default function Home() {
     // } finally {
     //   setIsLoading(false);
     //   setIsOpen(true);
-    //   console.log(currentTempreture);
-    //   console.log(nextHoursForecast);
     // }
   };
 
   return (
     <div className='Home'>
-
-    <Search
-          onSearch={handleSearch}
-        />
-
+      <Search onSearch={handleSearch} />
       {
-        isloading ? <Loader /> : isOpen &&
+        isloading ? <Loader cityName={keyword} /> : isOpen &&
           <div className='Home__forcast-container'>
 
             <div className='forcast-container'>
-              <div className='forcast-container__location'>
-                <span className='forcast-container__span'>
-                  <h1 className='forcast-container__span-city'>Tel Aviv</h1>
-                  <button className='forcast-container__favorites-button'>Add to favorites</button>
-                  <h1 className='forcast-container__span-degrees'>
-                    {isMetric ? `${currentTempreture.Temperature.Metric.Value}°` : `${currentTempreture.Temperature.Imperial.Value}F`}
-                  </h1>
-                </span>
-                <img className='forcast-container__image' src={getImage(currentTempreture.WeatherIcon)} alt='s' />
-              </div>
-
-              {nextHoursForecast && 
-                <div className='forcast-container__today'>
-                  <h2 className='forcast-container__title'>TODAY'S FORECAST</h2>
-                  <div className='forcast-container__today-forecast'>
-                    <ItemToday 
-                      data={nextHoursForecast}
-                    />
+              <section className='forcast-container__location'>
+                <div className='forcast-container__span-container'>
+                  <div className='forcast-container__span'>
+                    <h1 className='forcast-container__span-city'>{keyword}</h1>
+                    <h1 className='forcast-container__span-degrees'>
+                      {isMetric ? `${currentTempreture.Temperature.Metric.Value}°` : `${currentTempreture.Temperature.Imperial.Value}F`}
+                    </h1>
+                    <div className='forcast-container__span-utils'>
+                      <button className='forcast-container__favorites-button'>Add to favorites</button>
+                      <p className='forcast-container__span-utils-tempreture'>C°</p>
+                      <p className='forcast-container__span-utils-tempreture'>F°</p>
+                    </div>
                   </div>
+                  
                 </div>
-              }
+                <img className='forcast-container__image' src={getImage(currentTempreture.WeatherIcon)} alt='s' />
+              </section>
 
-              <div className='forcast-container__air-conditions'>
+              <section className='forcast-container__today'>
+                <h2 className='forcast-container__title'>TODAY'S FORECAST</h2>
+                {nextHoursForecast.length > 0 ?
+                <div className='forcast-container__today-forecast'>
+                  <ItemToday 
+                    data={nextHoursForecast}
+                  />
+                </div>
+                :
+                <h2 className='forcast-container__title'>No results...</h2>
+                }
+              </section>
+
+              <section className='forcast-container__air-conditions'>
                 <h3 className='forcast-container__title'>AIR CONDITIONS</h3>
                 <div className='air-conditions__details-container'>
                   <div className='air-conditions__details'>
@@ -147,20 +159,22 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
             </div>
             
-            {nextWeekForecast && 
-              <div className='forcast-container__weekly'>
-                <h2 className='forcast-container__weekly-title'>WEEKLY FORECAST</h2>
-                <div className='forcast-container__weekly-forecast'>
-                  <ItemWeekly 
-                    data={nextWeekForecast}
-                  />
-                </div>
+            <section className='forcast-container__weekly'>
+              <h2 className='forcast-container__weekly-title'>WEEKLY FORECAST</h2>
+              {nextWeekForecast.length > 0 ?
+              <div className='forcast-container__weekly-forecast'>
+                <ItemWeekly 
+                  data={nextWeekForecast}
+                />
               </div>
-            }
-
+              :
+              <h2 className='forcast-container__weekly-title'>No results...</h2>
+              }
+            </section>
+            
           </div>
       }
     </div>

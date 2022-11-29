@@ -9,7 +9,6 @@ export default function ItemToday({data}) {
           <h4 className='ItemToday__time'>{item.DateTime.slice(11,16)}</h4>
           <img className='ItemToday__icon' src={getImage(item.WeatherIcon)} alt='whaether icon'/>
           <span className='ItemToday__tempreture'>{item.Temperature.Value}°</span>
-          {console.log(item)}
         </div>
       ))}
     </>
