@@ -54,6 +54,28 @@
   padding: 0;
 }
 
+#light .ItemFavoriets__error {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: black;
+  margin: 20px 0;
+  padding: 0;
+}
+
+#dark .ItemFavoriets__error {
+  font-family: 'Roboto',sans-serif;
+  font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 20px 0;
+  padding: 0;
+}
+
 #light .ItemFavoriets__tempreture {
   font-family: 'Roboto',sans-serif;
   font-size: 2rem;
@@ -172,6 +194,16 @@
     max-width: 90px;
     font-size: 1.1rem;
     line-height: 1.5rem;
+  }
+
+  #light .ItemFavoriets__error {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+  
+  #dark .ItemFavoriets__error {
+    font-size: 0.8rem;
+    line-height: 1rem;
   }
   
   #light .ItemFavoriets__tempreture {

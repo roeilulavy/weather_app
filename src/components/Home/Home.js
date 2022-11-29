@@ -15,7 +15,7 @@ import {currentWeather} from '../../utils/currentWeather';
 import {nextForecast} from '../../utils/nextTwelve';
 import {futureForecast} from '../../utils/futureForecast';
 
-export default function Home({ isMetric, savedPlaces, handleAddPlace, handleRemovePlace }) {
+export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAddPlace, handleRemovePlace }) {
 
   const [isloading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -30,8 +30,9 @@ export default function Home({ isMetric, savedPlaces, handleAddPlace, handleRemo
   const [nextWeekForecast, setNextWeekForecast] = useState([]);
 
   useEffect(() => {
-    handleSearch('215854', 'Tel Aviv');
-  }, []);
+    console.log(searchByKeycode)
+    handleSearch(searchByKeycode.keyCode, searchByKeycode.cityName);
+  }, [searchByKeycode]);
 
   useEffect(() => {
     const isExist = savedPlaces.some(item => keyCode === item.Key);
@@ -62,36 +63,42 @@ export default function Home({ isMetric, savedPlaces, handleAddPlace, handleRemo
     // }, 500);
 
     try {
-      const getCurrentWeather = await Api.getCurrentWeather(keyCode);
+      // const getCurrentWeather = await Api.getCurrentWeather(keyCode);
 
-      if (getCurrentWeather) {
-        setCurrentTempreture(getCurrentWeather[0]);
-      }
+      // if (getCurrentWeather) {
+      //   setCurrentTempreture(getCurrentWeather[0]);
+      // }
 
-      if(isMetric) {
-        const getNextHoursForecast = await Api.getHourlyForecastsInCelsius(keyCode);
-        const getWeeklyForecast = await Api.getFutureForecastsInCelsius(keyCode);
+      // if(isMetric) {
+      //   const getNextHoursForecast = await Api.getHourlyForecastsInCelsius(keyCode);
+      //   const getWeeklyForecast = await Api.getFutureForecastsInCelsius(keyCode);
 
-        if (getNextHoursForecast) {
-          setNextHoursForecast(getNextHoursForecast);
-        }
+      //   if (getNextHoursForecast) {
+      //     setNextHoursForecast(getNextHoursForecast);
+      //   }
 
-        if (getWeeklyForecast) {
-          setNextWeekForecast(getWeeklyForecast.DailyForecasts);
-        }
-      } else {
-        const getNextHoursForecast = await Api.getHourlyForecastsInFahrenheit(keyCode);
-        const getWeeklyForecast = await Api.getFutureForecastsInFahrenheit(keyCode);
+      //   if (getWeeklyForecast) {
+      //     setNextWeekForecast(getWeeklyForecast.DailyForecasts);
+      //   }
+      // } else {
+      //   const getNextHoursForecast = await Api.getHourlyForecastsInFahrenheit(keyCode);
+      //   const getWeeklyForecast = await Api.getFutureForecastsInFahrenheit(keyCode);
 
-        if (getNextHoursForecast) {
-          setNextHoursForecast(getNextHoursForecast);
-        }
+      //   if (getNextHoursForecast) {
+      //     setNextHoursForecast(getNextHoursForecast);
+      //   }
 
-        if (getWeeklyForecast) {
-          setNextWeekForecast(getWeeklyForecast.DailyForecasts);
-        }
-      }
+      //   if (getWeeklyForecast) {
+      //     setNextWeekForecast(getWeeklyForecast.DailyForecasts);
+      //   }
+        
+      // }
 
+
+      setCurrentTempreture(currentWeather[0]);
+      setNextHoursForecast(nextForecast);
+      setNextWeekForecast(futureForecast.DailyForecasts);
+      
       setIsLoading(false);
       setIsOpen(true);
       
@@ -173,7 +180,7 @@ export default function Home({ isMetric, savedPlaces, handleAddPlace, handleRemo
                         <div className='air-conditions__detail'>
                           <span className='air-conditions__details-title'>Wind</span>
                           <span className='air-conditions__details-subtitle'>
-                            {isMetric ? `${currentTempreture.Wind.Speed.Metric.Value} Km/h` : `${currentTempreture.Wind.speed.Imperial.Value} E`}
+                            {isMetric ? `${currentTempreture.Wind.Speed.Metric.Value} Km/h` : `${currentTempreture.Wind.Speed.Imperial.Value} E`}
                           </span>
                         </div>
                       </div>

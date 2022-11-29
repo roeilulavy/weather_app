@@ -3,7 +3,7 @@ import Navbar from "./Navbar/Navbar";
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
 import './App.css';
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ThemeContext = createContext(null);
 
@@ -20,9 +20,13 @@ function App() {
   }
 
   const [theme, setTheme] = useState("light");
-  const [isMetric, setIsMetric] = useState(true);
   const [savedPlaces, setSavedPlaces] = useState(getLocalStorage());
+  const [isMetric, setIsMetric] = useState(true);
+  const [searchByKeycode, setSearchByKeycode] = useState([]);
 
+  useEffect(() => {
+    setSearchByKeycode({keyCode: '215854', cityName: 'Tel Aviv'});
+  }, []);
 
   const toggleTheme = () => {
     setTheme((current) => (current === "light" ? "dark" : "light"));
@@ -32,17 +36,27 @@ function App() {
     setIsMetric(!isMetric);
   }
 
+  const handlePlaceClick = (keyCode, cityName) => {
+    setSearchByKeycode({keyCode, cityName});
+  };
+
   const handleAddPlace = (data) => {
     let list = JSON.parse(localStorage.getItem('savedPlaces'));
 
-    const isExist = list.some(item => data.Key === item.Key);
+    if (list === null) {
+      let newList = [];
+      newList.push(data);
+      localStorage.setItem('savedPlaces', JSON.stringify(newList));
+      setSavedPlaces(newList);
+    } else {
+      const isExist = list.some(item => data.Key === item.Key);
 
-    if(!isExist) {
-      list.push(data);
-      localStorage.setItem('savedPlaces', JSON.stringify(list));
-      setSavedPlaces(list);
+      if(!isExist) {
+        list.push(data);
+        localStorage.setItem('savedPlaces', JSON.stringify(list));
+        setSavedPlaces(list);
+      }
     }
-    
   };
 
   const handleRemovePlace = (KeyCode) => {
@@ -73,6 +87,7 @@ function App() {
                   <Home 
                     isMetric={isMetric}
                     savedPlaces={savedPlaces}
+                    searchByKeycode={searchByKeycode}
                     handleAddPlace={handleAddPlace}
                     handleRemovePlace={handleRemovePlace}
                   />
@@ -84,6 +99,7 @@ function App() {
                   <Favorites 
                     isMetric={isMetric}
                     savedPlaces={savedPlaces}
+                    handlePlaceClick={handlePlaceClick}
                     handleRemovePlace={handleRemovePlace}
                   />
                 }

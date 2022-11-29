@@ -1,7 +1,7 @@
 import ItemFavoriets from '../ItemFavoriets/ItemFavoriets';
 import './Favorites.css';
 
-export default function Favorites({ isMetric, savedPlaces, handleRemovePlace }) {
+export default function Favorites({ isMetric, savedPlaces, handlePlaceClick, handleRemovePlace }) {
   return (
     <div className='Favorites'>
       <h1 className='Favorites__title'>Saved places</h1>
@@ -12,6 +12,7 @@ export default function Favorites({ isMetric, savedPlaces, handleRemovePlace }) 
               key={index}
               isMetric={isMetric}
               data={place}
+              handlePlaceClick={handlePlaceClick}
               handleRemovePlace={handleRemovePlace}
             />
           ))}
