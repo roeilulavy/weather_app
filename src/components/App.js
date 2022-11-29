@@ -3,7 +3,7 @@ import Navbar from "./Navbar/Navbar";
 import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
 import './App.css';
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const ThemeContext = createContext(null);
 
@@ -20,12 +20,17 @@ function App() {
   }
 
   const [theme, setTheme] = useState("light");
+  const [isMetric, setIsMetric] = useState(true);
   const [savedPlaces, setSavedPlaces] = useState(getLocalStorage());
 
 
   const toggleTheme = () => {
     setTheme((current) => (current === "light" ? "dark" : "light"));
   };
+
+  const toggleMetric = () => {
+    setIsMetric(!isMetric);
+  }
 
   const handleAddPlace = (data) => {
     let list = JSON.parse(localStorage.getItem('savedPlaces'));
@@ -47,8 +52,6 @@ function App() {
       return place.Key !== KeyCode
     });
 
-    console.log(filteredList)
-
     localStorage.setItem('savedPlaces', JSON.stringify(filteredList));
     setSavedPlaces(filteredList);
   };
@@ -58,7 +61,7 @@ function App() {
       <div className="App" id={theme}>
         <Navbar
           toggleTheme={toggleTheme}
-          theme={theme}
+          toggleMetric={toggleMetric}
         />
 
         <Routes>
@@ -68,6 +71,7 @@ function App() {
                 path="/home"
                 element={
                   <Home 
+                    isMetric={isMetric}
                     savedPlaces={savedPlaces}
                     handleAddPlace={handleAddPlace}
                     handleRemovePlace={handleRemovePlace}
@@ -78,6 +82,7 @@ function App() {
                 path="/favorites"
                 element={
                   <Favorites 
+                    isMetric={isMetric}
                     savedPlaces={savedPlaces}
                     handleRemovePlace={handleRemovePlace}
                   />

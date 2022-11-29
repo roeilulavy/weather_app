@@ -6,6 +6,26 @@
   padding: 0;
 }
 
+#light .Home__errorMessage {
+  font-family:'Roboto',sans-serif;
+  font-size: 2.6rem;
+  line-height: 2.6rem;
+  font-weight: 700;
+  color: black;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#dark .Home__errorMessage {
+  font-family:'Roboto',sans-serif;
+  font-size: 2.6rem;
+  line-height: 2.6rem;
+  font-weight: 700;
+  color: rgba(245, 245, 245, 0.8);
+  margin: 0 auto;
+  padding: 0;
+}
+
 .Home__forcast-container {
   display: flex;
   flex-direction: row;
@@ -70,28 +90,6 @@
   font-weight: 700;
   margin: 0;
   padding: 0;
-}
-
-.forcast-container__span-utils {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 15px 0 0;
-  padding: 0;
-}
-
-.forcast-container__span-utils-tempreture {
-  font-family:'Roboto',sans-serif;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  font-weight: 700;
-  cursor: pointer;
-  margin: 0 5px 0 20px;
-  padding: 0;
-}
-
-.forcast-container__span-utils-tempreture:last-child {
-  margin: 0;
 }
 
 #light .forcast-container__favorites-button {
@@ -437,10 +435,32 @@
   }
 }
 
+@media screen and (max-width:700px) {
+  #light .Home__errorMessage {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  #dark .Home__errorMessage {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
 @media screen and (max-width:550px) {
   .Home__forcast-container {
     margin: 0;
     padding: 0 10px;
+  }
+
+  #light .Home__errorMessage {
+    font-size: 1.1rem;
+    line-height: 2rem;
+  }
+
+  #dark .Home__errorMessage {
+    font-size: 1.1rem;
+    line-height: 2rem;
   }
 
   #light .forcast-container__location {
@@ -484,13 +504,6 @@
   .forcast-container__title {
     font-size: 0.8rem;
     line-height: 1.1rem;
-  }
-
-  .forcast-container__span-utils-tempreture {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    margin: 0 5px 0 10px;
-    padding: 0;
   }
 
   #light .forcast-container__today {

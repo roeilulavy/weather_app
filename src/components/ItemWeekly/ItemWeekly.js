@@ -1,7 +1,7 @@
 import {getImage} from '../../utils/getImage';
 import './ItemWeekly.css';
 
-export default function ItemWeekly({data}) {
+export default function ItemWeekly({data, isMetric}) {
 
   const WEEK_DAYS = ['Sunday', 'Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const dayInWeek = new Date().getDay();
@@ -18,8 +18,8 @@ export default function ItemWeekly({data}) {
           <span className='ItemWeekly__icon-description'>{item.Day ? item.Day.IconPhrase : item.Night.IconPhrase}</span>
         </div>
         <div>
-          <span className='ItemWeekly__tempreture'>{item.Temperature.Maximum.Value}</span>
-          <span className='ItemWeekly__tempreture'>/{item.Temperature.Minimum.Value}</span>
+          <span className='ItemWeekly__tempreture'>{item.Temperature.Maximum.Value}{isMetric ? `°` : `f`}</span>
+          <span className='ItemWeekly__tempreture'>/{item.Temperature.Minimum.Value}{isMetric ? `°` : `f`}</span>
         </div>
       </div>
       ))}

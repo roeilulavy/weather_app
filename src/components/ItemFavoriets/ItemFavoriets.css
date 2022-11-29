@@ -75,7 +75,7 @@
 }
 
 .ItemFavoriets__icon {
-  width: 100px;
+  width: 200px;
   margin: 0;
   padding: 0;
 }
@@ -147,7 +147,7 @@
   }
   
   .ItemFavoriets__icon {
-    width: 80px;
+    width: 100px;
     margin: 0;
     padding: 0;
   }
@@ -187,7 +187,7 @@
   }
   
   .ItemFavoriets__icon {
-    width: 50px;
+    width: 100px;
     margin: 0;
     padding: 0;
   }

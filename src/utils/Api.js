@@ -32,7 +32,7 @@ class NewsApi {
     return this._checkResponse(response);
   }
 
-  async getCurrentWeathr(searchKeyword) {
+  async getCurrentWeather(searchKeyword) {
     const response = await fetch(`${this.baseUrl}/${CurrentWeathr_URL}/${searchKeyword}?apikey=${API_KEY}&details=true`);
 
     return this._checkResponse(response);

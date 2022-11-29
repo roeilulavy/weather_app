@@ -27,6 +27,26 @@
   padding: 0;
 }
 
+#light .Favorites__subtitle {
+  font-family: 'Roboto',sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: black;
+  margin: 40px 0;
+  padding: 0;
+}
+
+#dark .Favorites__subtitle {
+  font-family: 'Roboto',sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: rgba(245, 245, 245, 0.8);
+  margin: 40px 0;
+  padding: 0;
+}
+
 .Favorites__places-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -62,6 +82,16 @@
     font-size: 2rem;
     line-height: 2.5rem;
     margin: 40px 0;
+  }
+
+  #light .Favorites__subtitle {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+  
+  #dark .Favorites__subtitle {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
   }
 
   .Favorites__places-container {
