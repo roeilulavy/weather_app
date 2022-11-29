@@ -15,12 +15,13 @@ import {currentWeather} from '../../utils/currentWeather';
 import {nextForecast} from '../../utils/nextTwelve';
 import {futureForecast} from '../../utils/futureForecast';
 
-export default function Home() {
+export default function Home({ savedPlaces, handleAddPlace, handleRemovePlace }) {
 
   const [isloading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [searchError, setSearchError] = useState(false);
   const [isMetric, setIsMetric] = useState(true);
+  const [isSaved, setIsSaved] = useState(false);
 
   const [keyword, setKeyword] = useState('');
   const [keyCode, setKeyCode] = useState('');
@@ -32,6 +33,16 @@ export default function Home() {
   useEffect(() => {
     handleSearch('215854', 'Tel Aviv');
   }, []);
+
+  useEffect(() => {
+    const isExist = savedPlaces.some(item => keyCode === item.Key);
+    
+    if(isExist) {
+      setIsSaved(true);
+    } else {
+      setIsSaved(false);
+    }
+  }, [keyCode, savedPlaces]);
 
   async function handleSearch(keyCode, cityName) {
     setKeyword('');
@@ -77,6 +88,16 @@ export default function Home() {
     // }
   };
 
+  const handleSavePlace = (keyCode, cityName) => {
+    handleAddPlace({Key: keyCode, CityName: cityName});
+    setIsSaved(true);
+  };
+
+  const handleDeletePlace = (keyCode) => {
+    handleRemovePlace(keyCode);
+    setIsSaved(false);
+  };
+
   return (
     <div className='Home'>
       <Search onSearch={handleSearch} />
@@ -93,7 +114,11 @@ export default function Home() {
                       {isMetric ? `${currentTempreture.Temperature.Metric.Value}°` : `${currentTempreture.Temperature.Imperial.Value}F`}
                     </h1>
                     <div className='forcast-container__span-utils'>
-                      <button className='forcast-container__favorites-button'>Add to favorites</button>
+                      {isSaved ? 
+                        <button className='forcast-container__favorites-button_active' onClick={() => handleDeletePlace(keyCode)}>Remove from favorites</button>
+                        :
+                        <button className='forcast-container__favorites-button' onClick={() => handleSavePlace(keyCode, keyword)}>Add to favorites</button>
+                      }
                       <p className='forcast-container__span-utils-tempreture'>C°</p>
                       <p className='forcast-container__span-utils-tempreture'>F°</p>
                     </div>

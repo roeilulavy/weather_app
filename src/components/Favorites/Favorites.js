@@ -1,7 +1,7 @@
 import ItemFavoriets from '../ItemFavoriets/ItemFavoriets';
 import './Favorites.css';
 
-export default function Favorites() {
+export default function Favorites({ savedPlaces, handleRemovePlace }) {
   return (
     <div className='Favorites'>
       <h1 className='Favorites__title'>Saved places</h1>

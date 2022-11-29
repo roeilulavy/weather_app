@@ -8,7 +8,6 @@ export default function Search({ onSearch }) {
   const [suggestions, setSuggestions] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [placeholder, setPlaceholder] = useState('');
-  const [savedPlaces, setSavedPlaces] = useState([]);
 
   useEffect(() => {
     setPlaceholder('Search for a place');
@@ -51,7 +50,10 @@ export default function Search({ onSearch }) {
       return;
     }
 
-    onSearch(keyword, keyword)
+    onSearch(1254, keyword)
+    setIsVisible(false);
+    setKeyword('');
+    setPlaceholder('Search for a place');
 
     // getCityBySearch(keyword);
   };

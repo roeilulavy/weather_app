@@ -150,8 +150,8 @@
   border: 1px solid #5389e7;
   border-radius: 15px;
   cursor: pointer;
-  margin: -40px 0 0;
-  padding: 0;
+  margin: 0;
+  padding: 0 5px;
 }
 
 .forcast-container__span-degrees {
