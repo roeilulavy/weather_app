@@ -97,10 +97,7 @@ function App() {
         />
 
         <Routes>
-          <Route 
-            path="*" 
-            element={<Navigate to="/home" />}
-          />
+          
 
           <Route
             path="/home"
@@ -124,6 +121,11 @@ function App() {
                 handleRemovePlace={handleRemovePlace}
               />
             }
+          />
+
+          <Route 
+            path="*" 
+            element={<Navigate to="/home" />}
           />
         </Routes>
       </div>
