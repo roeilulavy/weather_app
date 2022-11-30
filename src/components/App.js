@@ -97,7 +97,10 @@ function App() {
         />
 
         <Routes>
-          
+          <Route 
+            path="*" 
+            element={<Navigate to="roei-lulavy-27-11-22/home" />}
+          />
 
           <Route
             path="roei-lulavy-27-11-22/home"
@@ -121,11 +124,6 @@ function App() {
                 handleRemovePlace={handleRemovePlace}
               />
             }
-          />
-
-          <Route 
-            path="*" 
-            element={<Navigate to="roei-lulavy-27-11-22/home" />}
           />
         </Routes>
       </div>
