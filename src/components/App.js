@@ -98,7 +98,7 @@ function App() {
 
         <Routes>
           <Route 
-            path="/*" 
+            path="*" 
             element={<Navigate to="/home" />}
           />
 
