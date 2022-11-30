@@ -42,5 +42,17 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0"
+  },
+  "description": "Weather app",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roeilulavy/roei-lulavy-27-11-22.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roeilulavy/roei-lulavy-27-11-22/issues"
   }
 }
