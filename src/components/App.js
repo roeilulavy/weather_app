@@ -98,7 +98,7 @@ function App() {
 
         <Routes>
           <Route
-            path="/"
+            path="/roei-lulavy-27.11.22/home"
             element={
               <Home 
                 isMetric={isMetric}
@@ -110,7 +110,7 @@ function App() {
             }
           />
           <Route
-            path="/favorites"
+            path="/roei-lulavy-27.11.22/favorites"
             element={
               <Favorites 
                 isMetric={isMetric}
@@ -120,7 +120,7 @@ function App() {
               />
             }
           />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/roei-lulavy-27.11.22/home" />} />
         </Routes>
         
       </div>
