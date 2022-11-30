@@ -97,13 +97,8 @@ function App() {
         />
 
         <Routes>
-          <Route 
-            path="*" 
-            element={<Navigate to="roei-lulavy-27-11-22/home" />}
-          />
-
           <Route
-            path="roei-lulavy-27-11-22/home"
+            path="/"
             element={
               <Home 
                 isMetric={isMetric}
@@ -115,7 +110,7 @@ function App() {
             }
           />
           <Route
-            path="roei-lulavy-27-11-22/favorites"
+            path="/favorites"
             element={
               <Favorites 
                 isMetric={isMetric}
@@ -124,6 +119,10 @@ function App() {
                 handleRemovePlace={handleRemovePlace}
               />
             }
+          />
+          <Route 
+            path="*" 
+            element={<Navigate to="/" />}
           />
         </Routes>
       </div>
