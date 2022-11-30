@@ -98,7 +98,7 @@ function App() {
 
         <Routes>
           <Route
-            path="/home"
+            path="home"
             element={
               <Home 
                 isMetric={isMetric}
@@ -110,7 +110,7 @@ function App() {
             }
           />
           <Route
-            path="/favorites"
+            path="favorites"
             element={
               <Favorites 
                 isMetric={isMetric}
