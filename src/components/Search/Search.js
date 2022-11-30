@@ -50,25 +50,25 @@ export default function Search({ onSearch }) {
       return;
     }
 
-    onSearch(1254, keyword)
-    setIsVisible(false);
-    setKeyword('');
-    setPlaceholder('Search for a place');
-
-    // getCityBySearch(keyword);
+    getCityBySearch(keyword);
   };
 
   async function getCityBySearch(keySearch) {
 
-    const city = await Api.getCitySearch(keySearch);
-
-    if(city) {
-      onSearch(city[0].Key, city[0].LocalizedName);
-    }
-
     setIsVisible(false);
     setSuggestions([]);
     setKeyword('');
+    
+    try {
+      const city = await Api.getCitySearch(keySearch);
+
+      if(city) {
+        onSearch(city[0].Key, city[0].LocalizedName);
+        setPlaceholder('Search for a place');
+      }
+    } catch (error) {
+      setPlaceholder('Place was not found');
+    }
   }
 
   return (
