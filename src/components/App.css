@@ -1,11 +1,18 @@
 #light {
   width: 100%;
   min-height: 100vh;
-  background-color: white;
+  background-image: url('../images/background/blue-sky.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #dark {
   width: 100%;
   min-height: 100vh;
   background-color: rgb(21, 25, 35);
+  background-image: url('../images/background/dark-sky.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

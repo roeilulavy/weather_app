@@ -30,7 +30,7 @@ export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAdd
   useEffect(() => {
     
     if(searchByKeycode.length === 0) {
-      handleSearch('215854', 'TelAviv');
+      handleSearch('215854', 'Tel Aviv');
     } else {
       handleSearch(searchByKeycode.keyCode, searchByKeycode.cityName);
     }
