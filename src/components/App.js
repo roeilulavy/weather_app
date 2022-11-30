@@ -91,21 +91,15 @@ function App() {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className="App" id={theme}>
-        {/* <Navbar
+        <Navbar
           toggleTheme={toggleTheme}
           toggleMetric={toggleMetric}
-        /> */}
+        />
 
         <Routes>
           <Route
             path="/home"
             element={
-              <>
-              <Navbar
-                toggleTheme={toggleTheme}
-                toggleMetric={toggleMetric}
-              />
-
               <Home 
                 isMetric={isMetric}
                 savedPlaces={savedPlaces}
@@ -113,32 +107,21 @@ function App() {
                 handleAddPlace={handleAddPlace}
                 handleRemovePlace={handleRemovePlace}
               />
-              </>
             }
           />
           <Route
             path="/favorites"
             element={
-              <>
-              <Navbar
-                toggleTheme={toggleTheme}
-                toggleMetric={toggleMetric}
-              />
-
               <Favorites 
                 isMetric={isMetric}
                 savedPlaces={savedPlaces}
                 handlePlaceClick={handlePlaceClick}
                 handleRemovePlace={handleRemovePlace}
               />
-              </>
             }
           />
-          <Route 
-            path="/*"
-            element={<Navigate to="/home" />}
-          />
         </Routes>
+        
       </div>
     </ThemeContext.Provider>
   );
