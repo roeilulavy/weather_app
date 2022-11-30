@@ -1,7 +1,10 @@
 import {getImage} from '../../utils/getImage';
 import './ItemToday.css';
 
-export default function ItemToday({data, isMetric}) {
+export default function ItemToday({dataInC, dataInF, isMetric}) {
+
+  let data = isMetric ? dataInC : dataInF;
+
   return (
     <>
       {data.slice(0,5).map((item, index) => (

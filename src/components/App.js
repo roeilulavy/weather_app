@@ -4,6 +4,7 @@ import Home from './Home/Home';
 import Favorites from './Favorites/Favorites';
 import './App.css';
 import { createContext, useEffect, useState } from "react";
+import Api from "../utils/Api";
 
 export const ThemeContext = createContext(null);
 
@@ -25,7 +26,24 @@ function App() {
   const [searchByKeycode, setSearchByKeycode] = useState([]);
 
   useEffect(() => {
-    setSearchByKeycode({keyCode: '215854', cityName: 'Tel Aviv'});
+    if ('geolocation' in navigator) {
+
+      navigator.geolocation.getCurrentPosition((position) => {
+        
+        async function getGeoLocation(location) {
+          const getLocation = await Api.getGeoSearch(location);
+
+          if (getLocation) {
+            setSearchByKeycode({keyCode: getLocation.Key, cityName: getLocation.LocalizedName});
+          }
+        }
+
+        getGeoLocation([position.coords.latitude, position.coords.longitude]);
+      });
+      
+    } else {
+      setSearchByKeycode({keyCode: '215854', cityName: 'Tel Aviv'});
+    }
   }, []);
 
   const toggleTheme = () => {
@@ -79,30 +97,33 @@ function App() {
         />
 
         <Routes>
-          <Route path="*" element={<Navigate to="/home" />} />
+          <Route 
+            path="*" 
+            element={<Navigate to="/home" />}
+          />
 
           <Route
-                path="/home"
-                element={
-                  <Home 
-                    isMetric={isMetric}
-                    savedPlaces={savedPlaces}
-                    searchByKeycode={searchByKeycode}
-                    handleAddPlace={handleAddPlace}
-                    handleRemovePlace={handleRemovePlace}
-                  />
-                }
+            path="/home"
+            element={
+              <Home 
+                isMetric={isMetric}
+                savedPlaces={savedPlaces}
+                searchByKeycode={searchByKeycode}
+                handleAddPlace={handleAddPlace}
+                handleRemovePlace={handleRemovePlace}
+              />
+            }
           />
           <Route
-                path="/favorites"
-                element={
-                  <Favorites 
-                    isMetric={isMetric}
-                    savedPlaces={savedPlaces}
-                    handlePlaceClick={handlePlaceClick}
-                    handleRemovePlace={handleRemovePlace}
-                  />
-                }
+            path="/favorites"
+            element={
+              <Favorites 
+                isMetric={isMetric}
+                savedPlaces={savedPlaces}
+                handlePlaceClick={handlePlaceClick}
+                handleRemovePlace={handleRemovePlace}
+              />
+            }
           />
         </Routes>
       </div>

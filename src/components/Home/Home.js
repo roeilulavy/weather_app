@@ -11,10 +11,6 @@ import Loader from '../Loader/Loader';
 import { useEffect, useState } from 'react';
 import {getImage} from '../../utils/getImage';
 
-// import {currentWeather} from '../../utils/currentWeather';
-// import {nextForecast} from '../../utils/nextTwelve';
-// import {futureForecast} from '../../utils/futureForecast';
-
 export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAddPlace, handleRemovePlace }) {
 
   const [isloading, setIsLoading] = useState(false);
@@ -26,11 +22,18 @@ export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAdd
   const [keyCode, setKeyCode] = useState('');
   
   const [currentTempreture, setCurrentTempreture] = useState([]);
-  const [nextHoursForecast, setNextHoursForecast] = useState([]);
-  const [nextWeekForecast, setNextWeekForecast] = useState([]);
+  const [nextHoursForecastInC, setNextHoursForecastInC] = useState([]);
+  const [nextHoursForecastInF, setNextHoursForecastInF] = useState([]);
+  const [nextWeekForecastInC, setNextWeekForecastInC] = useState([]);
+  const [nextWeekForecastInF, setNextWeekForecastInF] = useState([]);
 
   useEffect(() => {
-    handleSearch(searchByKeycode.keyCode, searchByKeycode.cityName);
+    
+    if(searchByKeycode.length === 0) {
+      handleSearch('215854', 'TelAviv');
+    } else {
+      handleSearch(searchByKeycode.keyCode, searchByKeycode.cityName);
+    }
   }, [searchByKeycode]);
 
   useEffect(() => {
@@ -52,15 +55,6 @@ export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAdd
     setIsOpen(false);
     setIsLoading(true);
 
-    // setCurrentTempreture(currentWeather[0]);
-    // setNextHoursForecast(nextForecast);
-    // setNextWeekForecast(futureForecast.DailyForecasts);
-
-    // setTimeout(() => {
-    //   setIsLoading(false);
-    //   setIsOpen(true);
-    // }, 500);
-
     try {
       const getCurrentWeather = await Api.getCurrentWeather(keyCode);
 
@@ -68,34 +62,27 @@ export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAdd
         setCurrentTempreture(getCurrentWeather[0]);
       }
 
-      if(isMetric) {
-        const getNextHoursForecast = await Api.getHourlyForecastsInCelsius(keyCode);
-        const getWeeklyForecast = await Api.getFutureForecastsInCelsius(keyCode);
+      const getNextHoursForecastInC = await Api.getHourlyForecastsInCelsius(keyCode);
+      const getWeeklyForecastInC = await Api.getFutureForecastsInCelsius(keyCode);
 
-        if (getNextHoursForecast) {
-          setNextHoursForecast(getNextHoursForecast);
-        }
-
-        if (getWeeklyForecast) {
-          setNextWeekForecast(getWeeklyForecast.DailyForecasts);
-        }
-      } else {
-        const getNextHoursForecast = await Api.getHourlyForecastsInFahrenheit(keyCode);
-        const getWeeklyForecast = await Api.getFutureForecastsInFahrenheit(keyCode);
-
-        if (getNextHoursForecast) {
-          setNextHoursForecast(getNextHoursForecast);
-        }
-
-        if (getWeeklyForecast) {
-          setNextWeekForecast(getWeeklyForecast.DailyForecasts);
-        }
-        
+      if (getNextHoursForecastInC) {
+        setNextHoursForecastInC(getNextHoursForecastInC);
       }
 
-      // setCurrentTempreture(currentWeather[0]);
-      // setNextHoursForecast(nextForecast);
-      // setNextWeekForecast(futureForecast.DailyForecasts);
+      if (getWeeklyForecastInC) {
+        setNextWeekForecastInC(getWeeklyForecastInC.DailyForecasts);
+      }
+  
+      const getNextHoursForecastInF = await Api.getHourlyForecastsInFahrenheit(keyCode);
+      const getWeeklyForecastInF = await Api.getFutureForecastsInFahrenheit(keyCode);
+
+      if (getNextHoursForecastInF) {
+        setNextHoursForecastInF(getNextHoursForecastInF);
+      }
+
+      if (getWeeklyForecastInF) {
+        setNextWeekForecastInF(getWeeklyForecastInF.DailyForecasts);
+      }
       
       setIsLoading(false);
       setIsOpen(true);
@@ -148,10 +135,11 @@ export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAdd
 
                   <section className='forcast-container__today'>
                     <h2 className='forcast-container__title'>TODAY'S FORECAST</h2>
-                    {nextHoursForecast.length > 0 ?
+                    {nextHoursForecastInC.length > 0 ?
                     <div className='forcast-container__today-forecast'>
                       <ItemToday 
-                        data={nextHoursForecast}
+                        dataInC={nextHoursForecastInC}
+                        dataInF={nextHoursForecastInF}
                         isMetric={isMetric}
                       />
                     </div>
@@ -208,10 +196,11 @@ export default function Home({ isMetric, savedPlaces, searchByKeycode, handleAdd
                 
                 <section className='forcast-container__weekly'>
                   <h2 className='forcast-container__weekly-title'>WEEKLY FORECAST</h2>
-                  {nextWeekForecast.length > 0 ?
+                  {nextWeekForecastInC.length > 0 ?
                   <div className='forcast-container__weekly-forecast'>
                     <ItemWeekly 
-                      data={nextWeekForecast}
+                      dataInC={nextWeekForecastInC}
+                      dataInF={nextWeekForecastInF}
                       isMetric={isMetric}
                     />
                   </div>

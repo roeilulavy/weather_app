@@ -2,6 +2,7 @@ const BASE_URL = 'http://dataservice.accuweather.com';
 const API_KEY = 'BXavEULkerbqAJPASxxwAgzVsVTiwuqt';
 
 const AutoComplete_URL = 'locations/v1/cities/autocomplete';
+const GeoSearch_URL = '/locations/v1/cities/geoposition/search';
 const CitySearch_URL = 'locations/v1/cities/search';
 const CurrentWeathr_URL = 'currentconditions/v1';
 const HourlyForecasts_URL = 'forecasts/v1/hourly/12hour'
@@ -22,6 +23,12 @@ class NewsApi {
 
   async getAutoComplete(searchKeyword) {
     const response = await fetch(`${this.baseUrl}/${AutoComplete_URL}?apikey=${API_KEY}&q=${searchKeyword}`);
+
+    return this._checkResponse(response);
+  }
+
+  async getGeoSearch(searchKeyword) {
+    const response = await fetch(`${this.baseUrl}/${GeoSearch_URL}?apikey=${API_KEY}&q=${searchKeyword}`);
 
     return this._checkResponse(response);
   }

@@ -1,12 +1,14 @@
 import {getImage} from '../../utils/getImage';
 import './ItemWeekly.css';
 
-export default function ItemWeekly({data, isMetric}) {
+export default function ItemWeekly({dataInC, dataInF, isMetric}) {
 
   const WEEK_DAYS = ['Sunday', 'Monday', 'Thuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const dayInWeek = new Date().getDay();
 
   const forecastDays = WEEK_DAYS.slice(dayInWeek, 5).concat(WEEK_DAYS.slice(0, dayInWeek));
+
+  let data = isMetric ? dataInC : dataInF;
 
   return (
     <>

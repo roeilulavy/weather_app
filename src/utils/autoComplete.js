@@ -1,4 +1,4 @@
-export const places = [
+export const autoComplete = [
   {
     "Version": 1,
     "Key": "215854",

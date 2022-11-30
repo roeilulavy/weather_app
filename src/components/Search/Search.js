@@ -1,6 +1,7 @@
 import './Search.css';
 import { useEffect, useState } from 'react';
 import Api from '../../utils/Api';
+import {autoComplete} from '../../utils/autoComplete';
 
 export default function Search({ onSearch }) {
 
@@ -22,6 +23,8 @@ export default function Search({ onSearch }) {
     if (string.trim().length > 0) {
       setKeyword(string);
       setIsVisible(true);
+
+      // setSuggestions(autoComplete);
 
       const getAutoComplete = await Api.getAutoComplete(keyword);
 
