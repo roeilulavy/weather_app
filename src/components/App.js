@@ -98,7 +98,7 @@ function App() {
 
         <Routes>
           <Route
-            path="/home"
+            path="/"
             element={
               <Home 
                 isMetric={isMetric}
@@ -120,7 +120,7 @@ function App() {
               />
             }
           />
-          <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         
       </div>
