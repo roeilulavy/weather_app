@@ -123,10 +123,10 @@ function App() {
             }
           />
 
-          <Route 
+          {/* <Route 
             path="*" 
             element={<Navigate to="/home" />}
-          />
+          /> */}
         </Routes>
       </div>
     </ThemeContext.Provider>
