@@ -1,24 +1,23 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./Navbar/Navbar";
-import Home from './Home/Home';
-import Favorites from './Favorites/Favorites';
-import './App.css';
 import { createContext, useEffect, useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Api from "../utils/Api";
+import "./App.css";
+import Favorites from "./Favorites/Favorites";
+import Home from "./Home/Home";
+import Navbar from "./Navbar/Navbar";
 
 export const ThemeContext = createContext(null);
 
 function App() {
-
   const getLocalStorage = () => {
-    let list = localStorage.getItem('savedPlaces');
+    let list = localStorage.getItem("savedPlaces");
 
-    if(list) {
-      return JSON.parse(localStorage.getItem('savedPlaces'));
+    if (list) {
+      return JSON.parse(localStorage.getItem("savedPlaces"));
     } else {
       return [];
     }
-  }
+  };
 
   const [theme, setTheme] = useState("light");
   const [savedPlaces, setSavedPlaces] = useState(getLocalStorage());
@@ -26,23 +25,23 @@ function App() {
   const [searchByKeycode, setSearchByKeycode] = useState([]);
 
   useEffect(() => {
-    if ('geolocation' in navigator) {
-
+    if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        
         async function getGeoLocation(location) {
           const getLocation = await Api.getGeoSearch(location);
 
           if (getLocation) {
-            setSearchByKeycode({keyCode: getLocation.Key, cityName: getLocation.LocalizedName});
+            setSearchByKeycode({
+              keyCode: getLocation.Key,
+              cityName: getLocation.LocalizedName,
+            });
           }
         }
 
         getGeoLocation([position.coords.latitude, position.coords.longitude]);
       });
-      
     } else {
-      setSearchByKeycode({keyCode: '215854', cityName: 'Tel Aviv'});
+      setSearchByKeycode({ keyCode: "215854", cityName: "Tel Aviv" });
     }
   }, []);
 
@@ -52,55 +51,52 @@ function App() {
 
   const toggleMetric = () => {
     setIsMetric(!isMetric);
-  }
+  };
 
   const handlePlaceClick = (keyCode, cityName) => {
-    setSearchByKeycode({keyCode, cityName});
+    setSearchByKeycode({ keyCode, cityName });
   };
 
   const handleAddPlace = (data) => {
-    let list = JSON.parse(localStorage.getItem('savedPlaces'));
+    let list = JSON.parse(localStorage.getItem("savedPlaces"));
 
     if (list === null) {
       let newList = [];
       newList.push(data);
-      localStorage.setItem('savedPlaces', JSON.stringify(newList));
+      localStorage.setItem("savedPlaces", JSON.stringify(newList));
       setSavedPlaces(newList);
     } else {
-      const isExist = list.some(item => data.Key === item.Key);
+      const isExist = list.some((item) => data.Key === item.Key);
 
-      if(!isExist) {
+      if (!isExist) {
         list.push(data);
-        localStorage.setItem('savedPlaces', JSON.stringify(list));
+        localStorage.setItem("savedPlaces", JSON.stringify(list));
         setSavedPlaces(list);
       }
     }
   };
 
   const handleRemovePlace = (KeyCode) => {
-    let list = JSON.parse(localStorage.getItem('savedPlaces'));
+    let list = JSON.parse(localStorage.getItem("savedPlaces"));
 
-    const filteredList = list.filter(place => {
-      return place.Key !== KeyCode
+    const filteredList = list.filter((place) => {
+      return place.Key !== KeyCode;
     });
 
-    localStorage.setItem('savedPlaces', JSON.stringify(filteredList));
+    localStorage.setItem("savedPlaces", JSON.stringify(filteredList));
     setSavedPlaces(filteredList);
   };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className="App" id={theme}>
-        <Navbar
-          toggleTheme={toggleTheme}
-          toggleMetric={toggleMetric}
-        />
+        <Navbar toggleTheme={toggleTheme} toggleMetric={toggleMetric} />
 
         <Routes>
           <Route
             path="/home"
             element={
-              <Home 
+              <Home
                 isMetric={isMetric}
                 savedPlaces={savedPlaces}
                 searchByKeycode={searchByKeycode}
@@ -112,7 +108,7 @@ function App() {
           <Route
             path="/favorites"
             element={
-              <Favorites 
+              <Favorites
                 isMetric={isMetric}
                 savedPlaces={savedPlaces}
                 handlePlaceClick={handlePlaceClick}
@@ -122,7 +118,6 @@ function App() {
           />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
-        
       </div>
     </ThemeContext.Provider>
   );
