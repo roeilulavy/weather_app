@@ -4,7 +4,6 @@ import Sun_icon from "../../images/icons/sun-icon.png";
 import Tempreture_icon from "../../images/icons/temperature-icon.png";
 import Wind_icon from "../../images/icons/wind-icon.png";
 import Api from "../../utils/Api";
-import { getImage } from "../../utils/getImage";
 import ItemToday from "../ItemToday/ItemToday";
 import ItemWeekly from "../ItemWeekly/ItemWeekly";
 import Loader from "../Loader/Loader";
@@ -155,7 +154,7 @@ export default function Home({
                 </div>
                 <img
                   className="forcast-container__image"
-                  src={getImage(currentTempreture.WeatherIcon)}
+                  src={require(`../../images/weather/${currentTempreture.WeatherIcon}.png`)}
                   alt="s"
                 />
               </section>

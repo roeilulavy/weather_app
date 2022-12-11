@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Api from "../../utils/Api";
-import { getImage } from "../../utils/getImage";
 import "./ItemFavoriets.css";
 
 export default function ItemFavoriets({
@@ -61,11 +60,13 @@ export default function ItemFavoriets({
                   : `${placeData.Temperature.Imperial.Value}F`
                 : null}
             </p>
-            <img
-              className="ItemFavoriets__icon"
-              src={getImage(placeData.WeatherIcon)}
-              alt="wheather icon"
-            />
+            {placeData?.WeatherIcon ? (
+              <img
+                className="ItemFavoriets__icon"
+                src={require(`../../images/weather/${placeData.WeatherIcon}.png`)}
+                alt="wheather icon"
+              />
+            ) : null}
             <p className="ItemFavoriets__icon-description">
               {placeData.WeatherText}
             </p>

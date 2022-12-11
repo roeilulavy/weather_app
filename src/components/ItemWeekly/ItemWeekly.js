@@ -1,4 +1,3 @@
-import { getImage } from "../../utils/getImage";
 import "./ItemWeekly.css";
 
 export default function ItemWeekly({ dataInC, dataInF, isMetric }) {
@@ -30,7 +29,9 @@ export default function ItemWeekly({ dataInC, dataInF, isMetric }) {
             <img
               className="ItemWeekly__icon"
               src={
-                item.Day ? getImage(item.Day.Icon) : getImage(item.Night.Icon)
+                item.Day
+                  ? require(`../../images/weather/${item.Day.Icon}.png`)
+                  : require(`../../images/weather/${item.Night.Icon}.png`)
               }
               alt="weather icon"
             />
