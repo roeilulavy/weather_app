@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Api from "../utils/Api";
+import { getGeoSearch } from "../utils/Api";
 import "./App.css";
 import Favorites from "./Favorites/Favorites";
 import Home from "./Home/Home";
@@ -28,7 +28,7 @@ function App() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         async function getGeoLocation(location) {
-          const getLocation = await Api.getGeoSearch(location);
+          const getLocation = await getGeoSearch(location);
 
           if (getLocation) {
             setSearchByKeycode({

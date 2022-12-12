@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Api from "../../utils/Api";
+import { getCurrentWeather } from "../../utils/Api";
 import "./ItemFavoriets.css";
 
 export default function ItemFavoriets({
@@ -17,7 +17,7 @@ export default function ItemFavoriets({
   useEffect(() => {
     async function getPlaceData() {
       try {
-        const getData = await Api.getCurrentWeather(data.Key);
+        const getData = await getCurrentWeather(data.Key);
 
         if (getData) {
           setPlaceData(getData[0]);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Api from "../../utils/Api";
+import { getAutoCompleted, getCitySearch } from "../../utils/Api";
 import "./Search.css";
 
 export default function Search({ onSearch }) {
@@ -18,12 +18,10 @@ export default function Search({ onSearch }) {
 
       if (string.trim().length > 0) {
         try {
-          setKeyword(string);
-          setIsVisible(true);
-
-          const getAutoComplete = await Api.getAutoComplete(keyword);
+          const getAutoComplete = await getAutoCompleted(string);
 
           if (getAutoComplete) {
+            setIsVisible(true);
             setSuggestions(getAutoComplete);
           } else {
             setIsVisible(false);
@@ -65,7 +63,7 @@ export default function Search({ onSearch }) {
     setKeyword("");
 
     try {
-      const city = await Api.getCitySearch(keySearch);
+      const city = await getCitySearch(keySearch);
 
       if (city) {
         onSearch(city[0].Key, city[0].LocalizedName);
