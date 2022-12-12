@@ -1,4 +1,3 @@
-import { getImage } from "../../utils/getImage";
 import "./ItemToday.css";
 
 export default function ItemToday({ dataInC, dataInF, isMetric }) {
@@ -11,7 +10,7 @@ export default function ItemToday({ dataInC, dataInF, isMetric }) {
           <h4 className="ItemToday__time">{item.DateTime.slice(11, 16)}</h4>
           <img
             className="ItemToday__icon"
-            src={getImage(item.WeatherIcon)}
+            src={require(`../../images/weather/${item.WeatherIcon}.png`)}
             alt="wheather icon"
           />
           <span className="ItemToday__tempreture">

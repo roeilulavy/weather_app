@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Api from "../../utils/Api";
+import { getAutoCompleted, getCitySearch } from "../../utils/Api";
 import "./Search.css";
 
 export default function Search({ onSearch }) {
@@ -12,25 +12,30 @@ export default function Search({ onSearch }) {
     setPlaceholder("Search for a place");
   }, []);
 
-  async function onChangeHandler(text) {
-    const string = text.replace(/[^A-Za-z_ ]/gi, "");
+  useEffect(() => {
+    const delay = setTimeout(async () => {
+      const string = keyword.replace(/[^A-Za-z_ ]/gi, "");
 
-    setKeyword(string);
-    setIsVisible(true);
+      if (string.trim().length > 0) {
+        try {
+          const getAutoComplete = await getAutoCompleted(string);
 
-    if (string.trim().length > 0) {
-      setKeyword(string);
-      setIsVisible(true);
-
-      const getAutoComplete = await Api.getAutoComplete(keyword);
-
-      if (getAutoComplete) {
-        setSuggestions(getAutoComplete);
+          if (getAutoComplete) {
+            setIsVisible(true);
+            setSuggestions(getAutoComplete);
+          } else {
+            setIsVisible(false);
+          }
+        } catch (error) {
+          setIsVisible(false);
+          console.log(error);
+        }
       }
-    } else {
-      setIsVisible(false);
-    }
-  }
+    }, 500);
+    return () => {
+      clearTimeout(delay);
+    };
+  }, [keyword]);
 
   const onSuggestHandler = (keycode, cityName) => {
     onSearch(keycode, cityName);
@@ -52,13 +57,13 @@ export default function Search({ onSearch }) {
     getCityBySearch(keyword);
   };
 
-  async function getCityBySearch(keySearch) {
+  const getCityBySearch = async (keySearch) => {
     setIsVisible(false);
     setSuggestions([]);
     setKeyword("");
 
     try {
-      const city = await Api.getCitySearch(keySearch);
+      const city = await getCitySearch(keySearch);
 
       if (city) {
         onSearch(city[0].Key, city[0].LocalizedName);
@@ -67,7 +72,7 @@ export default function Search({ onSearch }) {
     } catch (error) {
       setPlaceholder("Place was not found");
     }
-  }
+  };
 
   return (
     <form className="Search" onSubmit={handleSubmit}>
@@ -78,7 +83,7 @@ export default function Search({ onSearch }) {
         placeholder={placeholder}
         autoComplete="off"
         value={keyword || ""}
-        onChange={(event) => onChangeHandler(event.target.value)}
+        onChange={(event) => setKeyword(event.target.value)}
         onBlur={() => {
           setTimeout(() => {
             setSuggestions([]);

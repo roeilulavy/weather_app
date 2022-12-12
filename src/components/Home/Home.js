@@ -3,8 +3,13 @@ import Drop_icon from "../../images/icons/drop-icon.png";
 import Sun_icon from "../../images/icons/sun-icon.png";
 import Tempreture_icon from "../../images/icons/temperature-icon.png";
 import Wind_icon from "../../images/icons/wind-icon.png";
-import Api from "../../utils/Api";
-import { getImage } from "../../utils/getImage";
+import {
+  getCurrentWeather,
+  getFutureForecastsInCelsius,
+  getFutureForecastsInFahrenheit,
+  getHourlyForecastsInCelsius,
+  getHourlyForecastsInFahrenheit,
+} from "../../utils/Api";
 import ItemToday from "../ItemToday/ItemToday";
 import ItemWeekly from "../ItemWeekly/ItemWeekly";
 import Loader from "../Loader/Loader";
@@ -50,7 +55,7 @@ export default function Home({
     }
   }, [keyCode, savedPlaces]);
 
-  async function handleSearch(keyCode, cityName) {
+  const handleSearch = async (keyCode, cityName) => {
     setKeyword("");
     setKeyCode("");
 
@@ -60,18 +65,16 @@ export default function Home({
     setIsLoading(true);
 
     try {
-      const getCurrentWeather = await Api.getCurrentWeather(keyCode);
+      const getWeather = await getCurrentWeather(keyCode);
 
-      if (getCurrentWeather) {
-        setCurrentTempreture(getCurrentWeather[0]);
+      if (getWeather) {
+        setCurrentTempreture(getWeather[0]);
       }
 
-      const getNextHoursForecastInC = await Api.getHourlyForecastsInCelsius(
+      const getNextHoursForecastInC = await getHourlyForecastsInCelsius(
         keyCode
       );
-      const getWeeklyForecastInC = await Api.getFutureForecastsInCelsius(
-        keyCode
-      );
+      const getWeeklyForecastInC = await getFutureForecastsInCelsius(keyCode);
 
       if (getNextHoursForecastInC) {
         setNextHoursForecastInC(getNextHoursForecastInC);
@@ -81,10 +84,10 @@ export default function Home({
         setNextWeekForecastInC(getWeeklyForecastInC.DailyForecasts);
       }
 
-      const getNextHoursForecastInF = await Api.getHourlyForecastsInFahrenheit(
+      const getNextHoursForecastInF = await getHourlyForecastsInFahrenheit(
         keyCode
       );
-      const getWeeklyForecastInF = await Api.getFutureForecastsInFahrenheit(
+      const getWeeklyForecastInF = await getFutureForecastsInFahrenheit(
         keyCode
       );
 
@@ -104,7 +107,7 @@ export default function Home({
       setIsOpen(false);
       console.log(error);
     }
-  }
+  };
 
   const handleSavePlace = (keyCode, cityName) => {
     handleAddPlace({ Key: keyCode, CityName: cityName });
@@ -155,8 +158,8 @@ export default function Home({
                 </div>
                 <img
                   className="forcast-container__image"
-                  src={getImage(currentTempreture.WeatherIcon)}
-                  alt="s"
+                  src={require(`../../images/weather/${currentTempreture.WeatherIcon}.png`)}
+                  alt="Weather Icon"
                 />
               </section>
 

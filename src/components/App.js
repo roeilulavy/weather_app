@@ -1,14 +1,12 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Api from "../utils/Api";
+import { getGeoSearch } from "../utils/Api";
 import "./App.css";
 import Favorites from "./Favorites/Favorites";
 import Home from "./Home/Home";
 import Navbar from "./Navbar/Navbar";
 
-export const ThemeContext = createContext(null);
-
-function App() {
+export default function App() {
   const getLocalStorage = () => {
     let list = localStorage.getItem("savedPlaces");
 
@@ -27,8 +25,8 @@ function App() {
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        async function getGeoLocation(location) {
-          const getLocation = await Api.getGeoSearch(location);
+        const getGeoLocation = async (location) => {
+          const getLocation = await getGeoSearch(location);
 
           if (getLocation) {
             setSearchByKeycode({
@@ -36,7 +34,7 @@ function App() {
               cityName: getLocation.LocalizedName,
             });
           }
-        }
+        };
 
         getGeoLocation([position.coords.latitude, position.coords.longitude]);
       });
@@ -88,39 +86,35 @@ function App() {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className="App" id={theme}>
-        <Navbar toggleTheme={toggleTheme} toggleMetric={toggleMetric} />
+    <div className="App" id={theme}>
+      <Navbar toggleTheme={toggleTheme} toggleMetric={toggleMetric} />
 
-        <Routes>
-          <Route
-            path="/home"
-            element={
-              <Home
-                isMetric={isMetric}
-                savedPlaces={savedPlaces}
-                searchByKeycode={searchByKeycode}
-                handleAddPlace={handleAddPlace}
-                handleRemovePlace={handleRemovePlace}
-              />
-            }
-          />
-          <Route
-            path="/favorites"
-            element={
-              <Favorites
-                isMetric={isMetric}
-                savedPlaces={savedPlaces}
-                handlePlaceClick={handlePlaceClick}
-                handleRemovePlace={handleRemovePlace}
-              />
-            }
-          />
-          <Route path="*" element={<Navigate to="/home" />} />
-        </Routes>
-      </div>
-    </ThemeContext.Provider>
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <Home
+              isMetric={isMetric}
+              savedPlaces={savedPlaces}
+              searchByKeycode={searchByKeycode}
+              handleAddPlace={handleAddPlace}
+              handleRemovePlace={handleRemovePlace}
+            />
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <Favorites
+              isMetric={isMetric}
+              savedPlaces={savedPlaces}
+              handlePlaceClick={handlePlaceClick}
+              handleRemovePlace={handleRemovePlace}
+            />
+          }
+        />
+        <Route path="*" element={<Navigate to="/home" />} />
+      </Routes>
+    </div>
   );
 }
-
-export default App;
