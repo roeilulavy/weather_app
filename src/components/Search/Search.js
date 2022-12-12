@@ -12,25 +12,32 @@ export default function Search({ onSearch }) {
     setPlaceholder("Search for a place");
   }, []);
 
-  async function onChangeHandler(text) {
-    const string = text.replace(/[^A-Za-z_ ]/gi, "");
+  useEffect(() => {
+    const delay = setTimeout(async () => {
+      const string = keyword.replace(/[^A-Za-z_ ]/gi, "");
 
-    setKeyword(string);
-    setIsVisible(true);
+      if (string.trim().length > 0) {
+        try {
+          setKeyword(string);
+          setIsVisible(true);
 
-    if (string.trim().length > 0) {
-      setKeyword(string);
-      setIsVisible(true);
+          const getAutoComplete = await Api.getAutoComplete(keyword);
 
-      const getAutoComplete = await Api.getAutoComplete(keyword);
-
-      if (getAutoComplete) {
-        setSuggestions(getAutoComplete);
+          if (getAutoComplete) {
+            setSuggestions(getAutoComplete);
+          } else {
+            setIsVisible(false);
+          }
+        } catch (error) {
+          setIsVisible(false);
+          console.log(error);
+        }
       }
-    } else {
-      setIsVisible(false);
-    }
-  }
+    }, 500);
+    return () => {
+      clearTimeout(delay);
+    };
+  }, [keyword]);
 
   const onSuggestHandler = (keycode, cityName) => {
     onSearch(keycode, cityName);
@@ -78,7 +85,7 @@ export default function Search({ onSearch }) {
         placeholder={placeholder}
         autoComplete="off"
         value={keyword || ""}
-        onChange={(event) => onChangeHandler(event.target.value)}
+        onChange={(event) => setKeyword(event.target.value)}
         onBlur={() => {
           setTimeout(() => {
             setSuggestions([]);
