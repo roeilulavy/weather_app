@@ -1,12 +1,10 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { getGeoSearch } from "../utils/Api";
 import "./App.css";
 import Favorites from "./Favorites/Favorites";
 import Home from "./Home/Home";
 import Navbar from "./Navbar/Navbar";
-
-export const ThemeContext = createContext(null);
 
 export default function App() {
   const getLocalStorage = () => {
@@ -88,37 +86,35 @@ export default function App() {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className="App" id={theme}>
-        <Navbar toggleTheme={toggleTheme} toggleMetric={toggleMetric} />
+    <div className="App" id={theme}>
+      <Navbar toggleTheme={toggleTheme} toggleMetric={toggleMetric} />
 
-        <Routes>
-          <Route
-            path="/home"
-            element={
-              <Home
-                isMetric={isMetric}
-                savedPlaces={savedPlaces}
-                searchByKeycode={searchByKeycode}
-                handleAddPlace={handleAddPlace}
-                handleRemovePlace={handleRemovePlace}
-              />
-            }
-          />
-          <Route
-            path="/favorites"
-            element={
-              <Favorites
-                isMetric={isMetric}
-                savedPlaces={savedPlaces}
-                handlePlaceClick={handlePlaceClick}
-                handleRemovePlace={handleRemovePlace}
-              />
-            }
-          />
-          <Route path="*" element={<Navigate to="/home" />} />
-        </Routes>
-      </div>
-    </ThemeContext.Provider>
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <Home
+              isMetric={isMetric}
+              savedPlaces={savedPlaces}
+              searchByKeycode={searchByKeycode}
+              handleAddPlace={handleAddPlace}
+              handleRemovePlace={handleRemovePlace}
+            />
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <Favorites
+              isMetric={isMetric}
+              savedPlaces={savedPlaces}
+              handlePlaceClick={handlePlaceClick}
+              handleRemovePlace={handleRemovePlace}
+            />
+          }
+        />
+        <Route path="*" element={<Navigate to="/home" />} />
+      </Routes>
+    </div>
   );
 }
