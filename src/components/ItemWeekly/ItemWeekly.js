@@ -12,7 +12,7 @@ export default function ItemWeekly({ dataInC, dataInF, isMetric }) {
   ];
   const dayInWeek = new Date().getDay();
 
-  const forecastDays = WEEK_DAYS.slice(dayInWeek, 5).concat(
+  const forecastDays = WEEK_DAYS.slice(dayInWeek, 7).concat(
     WEEK_DAYS.slice(0, dayInWeek)
   );
 

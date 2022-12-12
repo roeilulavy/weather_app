@@ -155,7 +155,7 @@ export default function Home({
                 <img
                   className="forcast-container__image"
                   src={require(`../../images/weather/${currentTempreture.WeatherIcon}.png`)}
-                  alt="s"
+                  alt="Weather Icon"
                 />
               </section>
 
