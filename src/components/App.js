@@ -8,7 +8,7 @@ import Navbar from "./Navbar/Navbar";
 
 export const ThemeContext = createContext(null);
 
-function App() {
+export default function App() {
   const getLocalStorage = () => {
     let list = localStorage.getItem("savedPlaces");
 
@@ -122,5 +122,3 @@ function App() {
     </ThemeContext.Provider>
   );
 }
-
-export default App;
