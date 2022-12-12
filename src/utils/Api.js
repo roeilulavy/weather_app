@@ -8,14 +8,14 @@ const CurrentWeathr_URL = "currentconditions/v1";
 const HourlyForecasts_URL = "forecasts/v1/hourly/12hour";
 const FutureForecasts_URL = "forecasts/v1/daily/5day";
 
-function checkResponse(response) {
+const checkResponse = (response) => {
   if (response.ok) {
     return response.json();
   }
 
   console.error("Error: " + response.status + " " + response.text);
   return Promise.reject(`Something went wrong:  ${response.status}`);
-}
+};
 
 export const getGeoSearch = async (searchKeyword) => {
   const response = await fetch(

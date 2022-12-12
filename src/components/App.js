@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        async function getGeoLocation(location) {
+        const getGeoLocation = async (location) => {
           const getLocation = await getGeoSearch(location);
 
           if (getLocation) {
@@ -36,7 +36,7 @@ function App() {
               cityName: getLocation.LocalizedName,
             });
           }
-        }
+        };
 
         getGeoLocation([position.coords.latitude, position.coords.longitude]);
       });

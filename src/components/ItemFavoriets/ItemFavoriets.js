@@ -31,10 +31,10 @@ export default function ItemFavoriets({
     getPlaceData();
   }, [data.Key]);
 
-  function handleItemClick(keyCode, cityName) {
+  const handleItemClick = (keyCode, cityName) => {
     handlePlaceClick(keyCode, cityName);
     Navigate("/home");
-  }
+  };
 
   const handleDelete = (keyCode) => {
     handleRemovePlace(keyCode);

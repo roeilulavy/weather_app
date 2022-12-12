@@ -57,7 +57,7 @@ export default function Search({ onSearch }) {
     getCityBySearch(keyword);
   };
 
-  async function getCityBySearch(keySearch) {
+  const getCityBySearch = async (keySearch) => {
     setIsVisible(false);
     setSuggestions([]);
     setKeyword("");
@@ -72,7 +72,7 @@ export default function Search({ onSearch }) {
     } catch (error) {
       setPlaceholder("Place was not found");
     }
-  }
+  };
 
   return (
     <form className="Search" onSubmit={handleSubmit}>

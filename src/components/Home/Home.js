@@ -55,7 +55,7 @@ export default function Home({
     }
   }, [keyCode, savedPlaces]);
 
-  async function handleSearch(keyCode, cityName) {
+  const handleSearch = async (keyCode, cityName) => {
     setKeyword("");
     setKeyCode("");
 
@@ -107,7 +107,7 @@ export default function Home({
       setIsOpen(false);
       console.log(error);
     }
-  }
+  };
 
   const handleSavePlace = (keyCode, cityName) => {
     handleAddPlace({ Key: keyCode, CityName: cityName });
