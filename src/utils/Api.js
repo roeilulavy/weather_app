@@ -1,5 +1,5 @@
 const BASE_URL = "https://dataservice.accuweather.com";
-const API_KEY = "BXavEULkerbqAJPASxxwAgzVsVTiwuqt";
+const API_KEY = "zLaExSZlNop3IroBI7QiGKlnQbvLcwoz";
 
 const GeoSearch_URL = "/locations/v1/cities/geoposition/search";
 const AutoComplete_URL = "locations/v1/cities/autocomplete";
