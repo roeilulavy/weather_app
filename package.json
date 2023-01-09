@@ -1,6 +1,6 @@
 {
-  "homepage": "https://roeilulavy.github.io/roei-lulavy-27-11-22",
-  "name": "roei-lulavy-27-11-22",
+  "homepage": "https://roeilulavy.github.io/weather_app/home",
+  "name": "roei-lulavy-weather-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
