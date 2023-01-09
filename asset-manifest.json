@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/weather_app/static/css/main.bd308cff.css",
+    "main.js": "/weather_app/static/js/main.655aeebb.js",
+    "static/media/dark-sky.jpg": "/weather_app/static/media/dark-sky.bb150aa83ffbca559844.jpg",
+    "static/media/blue-sky.jpg": "/weather_app/static/media/blue-sky.c078e24421fef6b18789.jpg",
+    "static/media/sun-icon.png": "/weather_app/static/media/sun-icon.859db473533e92c2d680.png",
+    "static/media/temperature-icon.png": "/weather_app/static/media/temperature-icon.ee84fc3e2ec1345ba306.png",
+    "static/media/wind-icon.png": "/weather_app/static/media/wind-icon.44ed57b8e6cc9398b87c.png",
+    "static/media/roboto-slab-700.woff": "/weather_app/static/media/roboto-slab-700.7cb09bef6990e87c9e2b.woff",
+    "static/media/roboto-500.woff": "/weather_app/static/media/roboto-500.cea99d3e3e13a3a599a0.woff",
+    "static/media/roboto-slab-700.woff2": "/weather_app/static/media/roboto-slab-700.934d56e4123b970a7c16.woff2",
+    "static/media/roboto-slab-400-regular.woff2": "/weather_app/static/media/roboto-slab-400-regular.c3cd9be60ab77224000b.woff2",
+    "static/media/drop-icon.png": "/weather_app/static/media/drop-icon.a8e52a6c1c917e49f1ff.png",
+    "static/media/roboto-500.woff2": "/weather_app/static/media/roboto-500.f5b74d7ffcdf85b9dd60.woff2",
+    "static/media/roboto-400-regular.woff2": "/weather_app/static/media/roboto-400-regular.176f8f5bd5f02b3abfcf.woff2",
+    "static/media/17.png": "/weather_app/static/media/17.4b8d4543699af9743509.png",
+    "static/media/41.png": "/weather_app/static/media/41.da8960711b2a7bdd80c0.png",
+    "static/media/16.png": "/weather_app/static/media/16.02f6796a4b217cbdd262.png",
+    "static/media/15.png": "/weather_app/static/media/15.9aac7942a26db293440b.png",
+    "index.html": "/weather_app/index.html",
+    "main.bd308cff.css.map": "/weather_app/static/css/main.bd308cff.css.map",
+    "main.655aeebb.js.map": "/weather_app/static/js/main.655aeebb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd308cff.css",
+    "static/js/main.655aeebb.js"
+  ]
+}
