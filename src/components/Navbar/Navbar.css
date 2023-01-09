@@ -1,0 +1,205 @@
+#light .Navbar {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #5389e7;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+#dark .Navbar {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(39, 46, 61);
+  margin: 0;
+  padding: 10px 20px;
+}
+
+#light .Navbar__title {
+  font-family:'Roboto',sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 500;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+#dark .Navbar__title {
+  font-family:'Roboto',sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 500;
+  color: rgba(245, 245, 245, 0.8);
+  margin: 0;
+  padding: 0;
+}
+
+.Navbar__nav-container {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+#light .Navbar__temp-icon {
+  width: 40px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+#dark .Navbar__temp-icon {
+  width: 40px;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+  margin: 0;
+  padding: 0;
+}
+
+#light .Navbar__theme-icon {
+  width: 40px;
+  cursor: pointer;
+  margin: -10px 0;
+  padding: 10px;
+}
+
+#dark .Navbar__theme-icon {
+  width: 60px;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+  margin: -10px 0;
+  padding: 0;
+}
+
+#light .Navbar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#dark .Navbar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto',sans-serif;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: rgba(245, 245, 245, 0.8);
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width:700px) {
+  #light .Navbar {
+    padding: 10px;
+  }
+  
+  #dark .Navbar {
+    padding: 10px;
+  }
+
+  #light .Navbar__title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    text-align: center;
+  }
+  
+  #dark .Navbar__title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    text-align: center;
+  }
+
+  #light .Navbar__temp-icon {
+    width: 30px;
+  }
+  
+  #dark .Navbar__temp-icon {
+    width: 30px;
+  }
+
+  #light .Navbar__theme-icon {
+    width: 30px;
+  }
+  
+  #dark .Navbar__theme-icon {
+    width: 50px;
+  }
+
+  #light .Navbar__link {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  #dark .Navbar__link {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media screen and (max-width:550px) {
+  #light .Navbar__title {
+    font-size: 1rem;
+    line-height: 1.1rem;
+  }
+  
+  #dark .Navbar__title {
+    font-size: 1rem;
+    line-height: 1.1rem;
+  }
+
+  #light .Navbar__temp-icon {
+    width: 20px;
+    margin-right: -10px;
+  }
+  
+  #dark .Navbar__temp-icon {
+    width: 20px;
+    margin-right: -10px;
+  }
+
+  #light .Navbar__theme-icon {
+    width: 20px;
+  }
+  
+  #dark .Navbar__theme-icon {
+    width: 40px;
+  }
+
+  #light .Navbar__link {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+  
+  #dark .Navbar__link {
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+}
