@@ -54,7 +54,7 @@ export default function Navbar({ toggleTheme, toggleMetric }) {
             onClick={() => handleChange()}
           />
         )}
-        <Link to="/home" className="Navbar__link">
+        <Link to="/" className="Navbar__link">
           Home
         </Link>
         <Link to="/favorites" className="Navbar__link">
