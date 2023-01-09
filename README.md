@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-https://roy-lulavy-weather-app.herokuapp.com/home
+https://roeilulavy.github.io/weather_app/
 
 ## Github repo
 
