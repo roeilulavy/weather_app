@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Dependabot metadata
         id: metadata
+        # Using @v2 is recommended to automatically receive minor/patch updates
+        # Latest specific version is v2.5.0 as of January 2025
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
@@ -35,7 +37,8 @@ jobs:
       - name: Approve Dependabot PR
         if: |
           (steps.metadata.outputs.update-type == 'version-update:semver-patch' || 
-           steps.metadata.outputs.update-type == 'version-update:semver-minor')
+           steps.metadata.outputs.update-type == 'version-update:semver-minor') ||
+          (steps.metadata.outputs.alert-state == 'OPEN')
         run: |
           gh pr review --approve "$PR_URL"
         env:
