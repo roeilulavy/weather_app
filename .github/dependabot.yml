@@ -1,0 +1,29 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    # Configure pull request limits
+    open-pull-requests-limit: 10
+    # Group all minor and patch updates together
+    groups:
+      dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    # Labels to add to pull requests
+    labels:
+      - "dependencies"
+      - "npm"
+    # Automatically assign reviewers (optional - adjust as needed)
+    reviewers:
+      - "roeilulavy"
+    # Commit message preferences
+    commit-message:
+      prefix: "npm"
+      prefix-development: "npm(dev)"
+      include: "scope"
