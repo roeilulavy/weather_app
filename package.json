@@ -41,7 +41,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^6.3.0"
   },
   "description": "Weather app",
   "main": "index.js",
