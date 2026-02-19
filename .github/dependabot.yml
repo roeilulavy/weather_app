@@ -5,7 +5,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    # Allow Dependabot to automatically merge pull requests
+    # Configure pull request limits
     open-pull-requests-limit: 10
     # Group all minor and patch updates together
     groups:
